@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AURELIA is a luxury tile and stone installation studio. We specialize in bespoke bookmatched marble slab fabrication, large-format porcelain tiling, and handcrafted Zellige for high-end residential and commercial estates.">
-  <title>AURELIA | Luxury Tile &amp; Stone Installation Studio</title>
+  <meta name="description" content="QSnera is a luxury tile and stone installation studio. We specialize in bespoke bookmatched marble slab fabrication, large-format porcelain tiling, and handcrafted Zellige for high-end residential and commercial estates.">
+  <title>QSnera | Luxury Tile &amp; Stone Installation Studio</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1271,6 +1271,145 @@
         text-align: center;
       }
     }
+
+    /* ==========================================================================
+       MARBLE SHOWCASE SECTION
+       ========================================================================== */
+    .marble-showcase {
+      padding: 10rem 0;
+      background-color: var(--color-charcoal-mid);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .marble-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .marble-visual-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .marble-slab-wall {
+      position: relative;
+      display: flex;
+      height: 450px;
+      border: 1px solid var(--color-gold-border);
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .slab {
+      width: 50%;
+      height: 100%;
+      background-image: url('assets/hero-bg.png');
+      background-size: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-position 0.8s;
+    }
+
+    .slab-left {
+      background-position: right center;
+    }
+
+    .slab-right {
+      background-position: left center;
+      transform: scaleX(-1);
+    }
+
+    .marble-slab-wall.misaligned .slab-right {
+      transform: scaleX(-1) translateY(-60px);
+    }
+
+    .seam-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: var(--color-gold-matte);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .seam-pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-gold-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--color-gold-bright);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%   { transform: scale(1);   opacity: 0.8; }
+      50%  { transform: scale(1.6); opacity: 1; box-shadow: 0 0 15px var(--color-gold-bright); }
+      100% { transform: scale(1);   opacity: 0.8; }
+    }
+
+    .bookmatch-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      color: var(--color-gray-text);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .control-btn {
+      background: transparent;
+      border: 1px solid var(--color-gold-border);
+      color: var(--color-gray-text);
+      padding: 0.5rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .control-btn.active {
+      border-color: var(--color-gold-matte);
+      color: var(--color-gold-matte);
+      background-color: rgba(197, 168, 128, 0.05);
+    }
+
+    .control-btn:hover {
+      border-color: var(--color-gold-bright);
+      color: var(--color-white);
+    }
+
+    .marble-desc {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-gray-text);
+      font-weight: 300;
+    }
+
+    @media (max-width: 992px) {
+      .marble-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+      .marble-showcase {
+        padding: 6rem 0;
+      }
+      .marble-slab-wall {
+        height: 350px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1283,7 +1422,7 @@
   <header id="header">
     <div class="container nav-wrapper">
       <a href="#hero" class="logo" id="logo-link">
-        AURELIA
+        QSnera
         <span>Stone &amp; Tile Studio</span>
       </a>
 
@@ -1332,11 +1471,58 @@
         <h2>Precision is not a metric. <br><span>It is our signature.</span></h2>
       </div>
       <div class="philosophy-right">
-        <p>At Aurelia, we view tile and natural stone installation as a high-precision discipline rather than a trade. Partnering with top-tier interior architects, luxury homebuilders, and private clients, we execute complex stone designs with uncompromising standards.</p>
+        <p>At QSnera, we view tile and natural stone installation as a high-precision discipline rather than a trade. Partnering with top-tier interior architects, luxury homebuilders, and private clients, we execute complex stone designs with uncompromising standards.</p>
         <p>From bookmatched Italian Calacatta slabs to handcrafted Moroccan Zellige layouts, our craftspeople merge time-honored artisanal details with modern mechanical leveling and waterproofing systems.</p>
         <div class="accent-quote">
           "A perfect installation respects the raw nature of the stone while integrating flawlessly with modern architecture."
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MARBLE SHOWCASE SECTION
+       ========================================================================== -->
+  <section class="marble-showcase reveal" id="marble-showcase">
+    <div class="container">
+      <div class="marble-grid">
+
+        <!-- Visual Column -->
+        <div class="marble-visual-container">
+          <div class="marble-slab-wall" id="marble-slab-wall">
+            <div class="slab slab-left"></div>
+            <div class="seam-line"><span class="seam-pulse"></span></div>
+            <div class="slab slab-right"></div>
+          </div>
+
+          <div class="bookmatch-controls">
+            <span class="control-label">Vein Match:</span>
+            <button class="control-btn active" id="btn-align-yes">Aligned</button>
+            <button class="control-btn" id="btn-align-no">Standard</button>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="marble-content-container">
+          <span class="section-subtitle">The Pinnacle of Stone Artistry</span>
+          <h2 class="section-title" style="margin-bottom: 2rem;">Large-Format Marble</h2>
+          <p class="marble-desc" style="margin-bottom: 1.5rem;">
+            Installing massive natural stone slabs is a complex architectural discipline. We specialize in the handling, fabrication, and mounting of premium marble slabs—including Calacatta, Carrara, and Statuario—reaching heights of up to 10 feet with zero tolerance for error.
+          </p>
+          <p class="marble-desc" style="margin-bottom: 2.5rem;">
+            Through custom bookmatching, we mirror the slab's organic veining across seams, transforming walls, wetrooms, and fireplaces into continuous, flowing works of art.
+          </p>
+
+          <ul class="precision-spec-list" style="margin-bottom: 3rem;">
+            <li><strong>Precision Bookmatching</strong>: Exact symmetrical vein alignment across all horizontal and vertical seams.</li>
+            <li><strong>Sub-Millimeter Joints</strong>: Hairline grout planes under 1mm filled with color-matched micro-epoxy resins.</li>
+            <li><strong>Structural Epoxy Anchoring</strong>: Mechanical and chemical reinforcement engineered for heavy vertical wall claddings.</li>
+            <li><strong>Zero-Lippage Guarantee</strong>: Strict flatness monitoring using mechanical tension systems.</li>
+          </ul>
+
+          <a href="#portfolio" class="btn-gold">Explore Marble Projects</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1537,11 +1723,11 @@
         <div class="contact-details">
           <div class="detail-item">
             <span class="detail-label">Design Studio</span>
-            <span class="detail-val">104 Aurelia Way, San Francisco, CA</span>
+            <span class="detail-val">104 QSnera Way, San Francisco, CA</span>
           </div>
           <div class="detail-item">
             <span class="detail-label">Direct Communication</span>
-            <span class="detail-val">inquire@aureliastone.com<br>+1 (415) 555-8930</span>
+            <span class="detail-val">inquire@qsnera.com<br>+1 (415) 555-8930</span>
           </div>
         </div>
       </div>
@@ -1591,7 +1777,7 @@
         <!-- Slide 1 -->
         <div class="testimonial-slide active" data-index="0">
           <div class="testimonial-quote">
-            "Aurelia's attention to detail is unmatched. They bookmatched a 12-foot marble slab wall in our master wetroom, and the veins flow so perfectly it looks like a single painting. They are true architectural artisans."
+            "QSnera's attention to detail is unmatched. They bookmatched a 12-foot marble slab wall in our master wetroom, and the veins flow so perfectly it looks like a single painting. They are true architectural artisans."
           </div>
           <div class="testimonial-author">Helen Harrington</div>
           <div class="testimonial-role">Principal at Harrington Design Studio</div>
@@ -1600,7 +1786,7 @@
         <!-- Slide 2 -->
         <div class="testimonial-slide" data-index="1">
           <div class="testimonial-quote">
-            "We build premium custom estates, and our clients expect perfection. Aurelia's installation of large-format porcelain slabs was flawlessly flat, with zero-lippage. They are the only team we trust with large format stone."
+            "We build premium custom estates, and our clients expect perfection. QSnera's installation of large-format porcelain slabs was flawlessly flat, with zero-lippage. They are the only team we trust with large format stone."
           </div>
           <div class="testimonial-author">Marcus Sterling</div>
           <div class="testimonial-role">CEO of Sterling Custom Homes</div>
@@ -1609,7 +1795,7 @@
         <!-- Slide 3 -->
         <div class="testimonial-slide" data-index="2">
           <div class="testimonial-quote">
-            "Our kitchen backsplash in handcrafted emerald Zellige tiles required a highly sensitive artisanal hand. Aurelia set them organically, emphasizing their raw beauty. The finish is stunning."
+            "Our kitchen backsplash in handcrafted emerald Zellige tiles required a highly sensitive artisanal hand. QSnera set them organically, emphasizing their raw beauty. The finish is stunning."
           </div>
           <div class="testimonial-author">Dr. Evelyn Reynolds</div>
           <div class="testimonial-role">Private Homeowner, Atherton CA</div>
@@ -1634,7 +1820,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#hero" class="logo">
-          AURELIA
+          QSnera
           <span>Stone &amp; Tile Studio</span>
         </a>
         <p>Providing custom stone fabrication and high-end tile installations for architectural designs.</p>
@@ -1654,7 +1840,7 @@
         <h4 class="footer-title">CONTACT</h4>
         <ul class="footer-links">
           <li><a href="#contact">Consultations</a></li>
-          <li><a href="mailto:inquire@aureliastone.com">inquire@aureliastone.com</a></li>
+          <li><a href="mailto:inquire@qsnera.com">inquire@qsnera.com</a></li>
           <li><a href="tel:+14155558930">+1 (415) 555-8930</a></li>
         </ul>
       </div>
@@ -1668,7 +1854,7 @@
     </div>
 
     <div class="container footer-bottom">
-      <p>&copy; 2026 AURELIA Studio. All Rights Reserved. Crafted with absolute precision.</p>
+      <p>&copy; 2026 QSnera Studio. All Rights Reserved. Crafted with absolute precision.</p>
       <div class="social-links">
         <a href="#hero">Instagram</a>
         <a href="#hero">Pinterest</a>
@@ -1786,6 +1972,30 @@
 
     prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
     nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    // ==========================================================================
+    // MARBLE SHOWCASE - INTERACTIVE VEIN MATCHING TOGGLE
+    // ==========================================================================
+    const btnAlignYes = document.getElementById('btn-align-yes');
+    const btnAlignNo = document.getElementById('btn-align-no');
+    const slabWall = document.getElementById('marble-slab-wall');
+
+    if (btnAlignYes && btnAlignNo && slabWall) {
+      const setAlignment = (align) => {
+        if (align) {
+          slabWall.classList.remove('misaligned');
+          btnAlignYes.classList.add('active');
+          btnAlignNo.classList.remove('active');
+        } else {
+          slabWall.classList.add('misaligned');
+          btnAlignYes.classList.remove('active');
+          btnAlignNo.classList.add('active');
+        }
+      };
+
+      btnAlignYes.addEventListener('click', () => setAlignment(true));
+      btnAlignNo.addEventListener('click', () => setAlignment(false));
+    }
 
     // Auto rotate every 8 seconds
     let carouselTimer = setInterval(() => showSlide(currentSlide + 1), 8000);
