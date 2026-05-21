@@ -3,3 +3,7 @@ node_modules/
 .env*
 dist/
 build/
+
+# Obsidian vault – personal notes, not website source
+Obsidian Vault/
+Q&A/

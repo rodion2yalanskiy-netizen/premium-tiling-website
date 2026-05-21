@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QSnera is a luxury tile and stone installation studio. We specialize in bespoke bookmatched marble slab fabrication, large-format porcelain tiling, and handcrafted Zellige for high-end residential and commercial estates.">
-  <title>QSnera | Luxury Tile &amp; Stone Installation Studio</title>
+  <meta name="description" content="QSNera is a luxury tile and stone installation studio. We specialize in bespoke bookmatched marble slab fabrication, large-format porcelain tiling, and handcrafted Zellige for high-end residential and commercial estates.">
+  <title>QSNera | Luxury Tile &amp; Stone Installation Studio</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -210,17 +210,38 @@
     }
 
     .logo {
+      color: var(--color-white);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      flex-shrink: 0;
+      transition: var(--transition-fast);
+    }
+
+    .logo-mark path {
+      transition: stroke var(--transition-fast);
+    }
+
+    .logo:hover .logo-mark path {
+      stroke: var(--color-gold-bright);
+    }
+
+    .logo-text {
       font-family: var(--font-serif);
       font-size: 1.8rem;
       letter-spacing: 0.15em;
-      color: var(--color-white);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       line-height: 1;
     }
 
-    .logo span {
+    .logo-text span {
       font-family: var(--font-sans);
       font-size: 0.6rem;
       letter-spacing: 0.4em;
@@ -1421,9 +1442,16 @@
   <!-- HEADER / NAV -->
   <header id="header">
     <div class="container nav-wrapper">
-      <a href="#hero" class="logo" id="logo-link">
-        QSnera
-        <span>Stone &amp; Tile Studio</span>
+      <a href="#hero" class="logo" id="logo-link" aria-label="QSNera – home">
+        <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="34" height="34" aria-hidden="true">
+          <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="#c5a880" stroke-width="1"/>
+          <path d="M18 8 L28 18 L18 28 L8 18 Z" fill="none" stroke="#c5a880" stroke-width="0.6" opacity="0.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="#c5a880" opacity="0.8"/>
+        </svg>
+        <div class="logo-text">
+          QSNera
+          <span>Stone &amp; Tile Studio</span>
+        </div>
       </a>
 
       <ul class="nav-links" id="nav-links">
@@ -1471,7 +1499,7 @@
         <h2>Precision is not a metric. <br><span>It is our signature.</span></h2>
       </div>
       <div class="philosophy-right">
-        <p>At QSnera, we view tile and natural stone installation as a high-precision discipline rather than a trade. Partnering with top-tier interior architects, luxury homebuilders, and private clients, we execute complex stone designs with uncompromising standards.</p>
+        <p>At QSNera, we view tile and natural stone installation as a high-precision discipline rather than a trade. Partnering with top-tier interior architects, luxury homebuilders, and private clients, we execute complex stone designs with uncompromising standards.</p>
         <p>From bookmatched Italian Calacatta slabs to handcrafted Moroccan Zellige layouts, our craftspeople merge time-honored artisanal details with modern mechanical leveling and waterproofing systems.</p>
         <div class="accent-quote">
           "A perfect installation respects the raw nature of the stone while integrating flawlessly with modern architecture."
@@ -1723,7 +1751,7 @@
         <div class="contact-details">
           <div class="detail-item">
             <span class="detail-label">Design Studio</span>
-            <span class="detail-val">104 QSnera Way, San Francisco, CA</span>
+            <span class="detail-val">104 QSNera Way, San Francisco, CA</span>
           </div>
           <div class="detail-item">
             <span class="detail-label">Direct Communication</span>
@@ -1777,7 +1805,7 @@
         <!-- Slide 1 -->
         <div class="testimonial-slide active" data-index="0">
           <div class="testimonial-quote">
-            "QSnera's attention to detail is unmatched. They bookmatched a 12-foot marble slab wall in our master wetroom, and the veins flow so perfectly it looks like a single painting. They are true architectural artisans."
+            "QSNera's attention to detail is unmatched. They bookmatched a 12-foot marble slab wall in our master wetroom, and the veins flow so perfectly it looks like a single painting. They are true architectural artisans."
           </div>
           <div class="testimonial-author">Helen Harrington</div>
           <div class="testimonial-role">Principal at Harrington Design Studio</div>
@@ -1786,7 +1814,7 @@
         <!-- Slide 2 -->
         <div class="testimonial-slide" data-index="1">
           <div class="testimonial-quote">
-            "We build premium custom estates, and our clients expect perfection. QSnera's installation of large-format porcelain slabs was flawlessly flat, with zero-lippage. They are the only team we trust with large format stone."
+            "We build premium custom estates, and our clients expect perfection. QSNera's installation of large-format porcelain slabs was flawlessly flat, with zero-lippage. They are the only team we trust with large format stone."
           </div>
           <div class="testimonial-author">Marcus Sterling</div>
           <div class="testimonial-role">CEO of Sterling Custom Homes</div>
@@ -1795,7 +1823,7 @@
         <!-- Slide 3 -->
         <div class="testimonial-slide" data-index="2">
           <div class="testimonial-quote">
-            "Our kitchen backsplash in handcrafted emerald Zellige tiles required a highly sensitive artisanal hand. QSnera set them organically, emphasizing their raw beauty. The finish is stunning."
+            "Our kitchen backsplash in handcrafted emerald Zellige tiles required a highly sensitive artisanal hand. QSNera set them organically, emphasizing their raw beauty. The finish is stunning."
           </div>
           <div class="testimonial-author">Dr. Evelyn Reynolds</div>
           <div class="testimonial-role">Private Homeowner, Atherton CA</div>
@@ -1819,9 +1847,16 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a href="#hero" class="logo">
-          QSnera
-          <span>Stone &amp; Tile Studio</span>
+        <a href="#hero" class="logo" aria-label="QSNera – home">
+          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="30" height="30" aria-hidden="true">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="#c5a880" stroke-width="1"/>
+            <path d="M18 8 L28 18 L18 28 L8 18 Z" fill="none" stroke="#c5a880" stroke-width="0.6" opacity="0.5"/>
+            <circle cx="18" cy="18" r="2.5" fill="#c5a880" opacity="0.8"/>
+          </svg>
+          <div class="logo-text">
+            QSNera
+            <span>Stone &amp; Tile Studio</span>
+          </div>
         </a>
         <p>Providing custom stone fabrication and high-end tile installations for architectural designs.</p>
       </div>
@@ -1854,7 +1889,7 @@
     </div>
 
     <div class="container footer-bottom">
-      <p>&copy; 2026 QSnera Studio. All Rights Reserved. Crafted with absolute precision.</p>
+      <p>&copy; 2026 QSNera Studio. All Rights Reserved. Crafted with absolute precision.</p>
       <div class="social-links">
         <a href="#hero">Instagram</a>
         <a href="#hero">Pinterest</a>
@@ -1870,54 +1905,58 @@
     const cursorDot = document.getElementById('custom-cursor');
     const cursorOutline = document.getElementById('custom-cursor-outline');
 
-    window.addEventListener('mousemove', function(e) {
-      const posX = e.clientX;
-      const posY = e.clientY;
+    if (cursorDot && cursorOutline) {
+      window.addEventListener('mousemove', function(e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
 
-      // Dot follows mouse position directly
-      cursorDot.style.left = `${posX}px`;
-      cursorDot.style.top = `${posY}px`;
+        // Dot follows mouse position directly
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
 
-      // Outline follows mouse position with smooth lag
-      cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-      }, { duration: 500, fill: "forwards" });
-    });
-
-    // Expand cursor hover animations on links, buttons
-    const interactiveElements = document.querySelectorAll('a, button, .precision-tab-btn');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursorDot.style.width = '12px';
-        cursorDot.style.height = '12px';
-        cursorDot.style.backgroundColor = '#e5cda8';
-        cursorOutline.style.width = '55px';
-        cursorOutline.style.height = '55px';
-        cursorOutline.style.borderColor = '#e5cda8';
+        // Outline follows mouse position with smooth lag
+        cursorOutline.animate({
+          left: `${posX}px`,
+          top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
       });
-      el.addEventListener('mouseleave', () => {
-        cursorDot.style.width = '8px';
-        cursorDot.style.height = '8px';
-        cursorDot.style.backgroundColor = '#c5a880';
-        cursorOutline.style.width = '40px';
-        cursorOutline.style.height = '40px';
-        cursorOutline.style.borderColor = '#c5a880';
+
+      // Expand cursor hover animations on links, buttons
+      const interactiveElements = document.querySelectorAll('a, button, .precision-tab-btn');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursorDot.style.width = '12px';
+          cursorDot.style.height = '12px';
+          cursorDot.style.backgroundColor = '#e5cda8';
+          cursorOutline.style.width = '55px';
+          cursorOutline.style.height = '55px';
+          cursorOutline.style.borderColor = '#e5cda8';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursorDot.style.width = '8px';
+          cursorDot.style.height = '8px';
+          cursorDot.style.backgroundColor = '#c5a880';
+          cursorOutline.style.width = '40px';
+          cursorOutline.style.height = '40px';
+          cursorOutline.style.borderColor = '#c5a880';
+        });
       });
-    });
+    }
 
     // ==========================================================================
     // SCROLL ACTIONS (HEADER STYLE, SECTION REVEAL)
     // ==========================================================================
     const header = document.getElementById('header');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+    }
 
     // Section reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
@@ -1963,15 +2002,27 @@
     const nextBtn = document.getElementById('carousel-next');
     let currentSlide = 0;
 
-    const showSlide = (index) => {
-      slides.forEach(slide => slide.classList.remove('active'));
-      
-      currentSlide = (index + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-    };
+    if (slides.length && prevBtn && nextBtn) {
+      const showSlide = (index) => {
+        slides.forEach(slide => slide.classList.remove('active'));
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+      };
 
-    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+      prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+      nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+      // Auto rotate every 8 seconds
+      let carouselTimer = setInterval(() => showSlide(currentSlide + 1), 8000);
+
+      // Reset timer on manual control click
+      [prevBtn, nextBtn].forEach(btn => {
+        btn.addEventListener('click', () => {
+          clearInterval(carouselTimer);
+          carouselTimer = setInterval(() => showSlide(currentSlide + 1), 8000);
+        });
+      });
+    }
 
     // ==========================================================================
     // MARBLE SHOWCASE - INTERACTIVE VEIN MATCHING TOGGLE
@@ -1997,84 +2048,72 @@
       btnAlignNo.addEventListener('click', () => setAlignment(false));
     }
 
-    // Auto rotate every 8 seconds
-    let carouselTimer = setInterval(() => showSlide(currentSlide + 1), 8000);
-
-    // Reset timer on manual control click
-    [prevBtn, nextBtn].forEach(btn => {
-      btn.addEventListener('click', () => {
-        clearInterval(carouselTimer);
-        carouselTimer = setInterval(() => showSlide(currentSlide + 1), 8000);
-      });
-    });
-
     // ==========================================================================
     // FORM SUBMISSION & INTERACTION
     // ==========================================================================
     const form = document.getElementById('consultation-form');
     const feedback = document.getElementById('form-feedback-message');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Basic client validation
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const location = document.getElementById('form-location').value.trim();
-      const message = document.getElementById('form-message').value.trim();
+    if (form && feedback) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-      if (!name || !email || !location || !message) {
-        feedback.textContent = 'Please fill out all required fields before submitting.';
-        feedback.className = 'form-feedback error';
-        return;
-      }
+        // Basic client validation
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const location = document.getElementById('form-location').value.trim();
+        const message = document.getElementById('form-message').value.trim();
 
-      // Check if email looks valid
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        feedback.textContent = 'Please enter a valid email address.';
-        feedback.className = 'form-feedback error';
-        return;
-      }
+        if (!name || !email || !location || !message) {
+          feedback.textContent = 'Please fill out all required fields before submitting.';
+          feedback.className = 'form-feedback error';
+          return;
+        }
 
-      // Mock success response
-      feedback.textContent = 'Thank you. Your consultation request has been received. Our studio will contact you shortly.';
-      feedback.className = 'form-feedback success';
+        // Check if email looks valid
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          feedback.textContent = 'Please enter a valid email address.';
+          feedback.className = 'form-feedback error';
+          return;
+        }
 
-      // Clear form
-      form.reset();
+        // Mock success response
+        feedback.textContent = 'Thank you. Your consultation request has been received. Our studio will contact you shortly.';
+        feedback.className = 'form-feedback success';
 
-      // Reset labels floating state
-      const inputs = form.querySelectorAll('.form-input');
-      inputs.forEach(input => {
-        input.blur();
+        // Clear form
+        form.reset();
+
+        // Reset labels floating state
+        form.querySelectorAll('.form-input').forEach(input => input.blur());
       });
-    });
+    }
 
     // Mobile Navigation Drawer Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('mobile-active');
-      // Visual feedback on mobile toggle button
-      const spans = menuToggle.querySelectorAll('span');
-      spans.forEach(span => {
-        span.style.backgroundColor = navLinks.classList.contains('mobile-active') ? '#c5a880' : '#f5f5f7';
-      });
-    });
 
-    // Close mobile nav when clicking a link
-    const mobileLinks = navLinks.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('mobile-active');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-active');
+        // Visual feedback on mobile toggle button
         const spans = menuToggle.querySelectorAll('span');
         spans.forEach(span => {
-          span.style.backgroundColor = '#f5f5f7';
+          span.style.backgroundColor = navLinks.classList.contains('mobile-active') ? '#c5a880' : '#f5f5f7';
         });
       });
-    });
+
+      // Close mobile nav when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-active');
+          menuToggle.querySelectorAll('span').forEach(span => {
+            span.style.backgroundColor = '#f5f5f7';
+          });
+        });
+      });
+    }
   </script>
 </body>
 </html>
