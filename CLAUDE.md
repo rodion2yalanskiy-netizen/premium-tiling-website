@@ -19,15 +19,15 @@ All code lives in a single `index.html` file — styles in `<style>`, scripts at
 premium-tiling-website/
 ├── index.html              # Entire website: markup, CSS, and JS in one file
 ├── assets/
-│   ├── hero-bg.png         # Hero background / marble texture (used for bookmatch effect)
+│   ├── hero-bg.png         # Hero background / marble texture
 │   ├── portfolio-1.png     # Portfolio gallery image
 │   ├── portfolio-2.png     # Portfolio gallery image
 │   ├── portfolio-3.png     # Portfolio gallery image
 │   └── portfolio-4.png     # Portfolio gallery image
 ├── Q&A/
-│   ├── CLAUDE_TASK.md      # Detailed frontend technical specification (task history)
+│   ├── CLAUDE_TASK.md      # Detailed frontend technical specification
 │   └── QSNera_Content.md   # Content brief / copywriting source
-├── Obsidian Vault/         # Personal project notes (Obsidian, not part of the website)
+├── Obsidian Vault/         # Personal project notes (not part of the website)
 ├── .gitignore
 └── CLAUDE.md               # This file
 ```
@@ -36,149 +36,175 @@ premium-tiling-website/
 
 ## Running the Project
 
-This is a static website with zero dependencies — no npm, no build step, no server required.
-
-### Open locally
 ```bash
-# macOS — open in default browser directly
 open index.html
-
-# Or with a local dev server (Python, no install required)
+# or
 python3 -m http.server 8080
-# Then visit: http://localhost:8080
 ```
-
-### Live preview (recommended for development)
-Use VS Code with the **Live Server** extension, or any static file server. The site works identically from the filesystem or a server.
 
 ---
 
 ## Design System (CSS Variables)
 
-All visual tokens are defined in `:root` at the top of the `<style>` block. **Never hardcode colors or fonts — always use variables.**
+All visual tokens are defined in `:root`. **Never hardcode colors or fonts — always use variables.**
+
+### Color Palette — Dark Navy + Copper-Gold + Warm Cream
+
+Updated: May 2026 — based on trust+premium research. Variants 4 (Copper/warm) and 5 (Purple gradient) merged.
 
 | Variable | Value | Usage |
 |---|---|---|
-| `--color-charcoal-dark` | `#0d0d0d` | Main page background |
-| `--color-charcoal-mid` | `#161618` | Alternate section background |
-| `--color-charcoal-light` | `#222224` | Cards, elevated surfaces |
-| `--color-gold-matte` | `#c5a880` | Primary accent, borders |
-| `--color-gold-bright` | `#e5cda8` | Highlights, hover states |
-| `--color-gold-dark` | `#8c7352` | Subdued gold accents |
-| `--color-white` | `#f5f5f7` | Body text |
-| `--color-gray-text` | `#a1a1a6` | Secondary text |
-| `--color-gold-border` | `rgba(197,168,128,0.15)` | Subtle dividers |
+| `--color-bg-dark` | `#0D1B2E` | Main page background (deep navy) |
+| `--color-bg-mid` | `#0F2035` | Alternate section background |
+| `--color-bg-card` | `#152845` | Cards, elevated surfaces |
+| `--color-bg-accent` | `#1A1035` | Purple-tinted accent sections |
+| `--color-copper` | `#C8903A` | Primary accent, borders (copper-gold) |
+| `--color-copper-bright` | `#E8B86D` | Highlights, hover states |
+| `--color-copper-dark` | `#8A6028` | Subdued accent |
+| `--color-indigo` | `#4F46E5` | CTA buttons, key actions |
+| `--color-indigo-hover` | `#6366F1` | Button hover state |
+| `--color-cream` | `#F5ECD7` | Body text (warm cream) |
+| `--color-cream-dim` | `#B8A99A` | Secondary text |
+| `--color-border` | `rgba(200,144,58,0.18)` | Subtle dividers |
 | `--font-serif` | Playfair Display | Headings, display text |
 | `--font-sans` | Outfit | Body text, UI labels |
 | `--transition-smooth` | `0.6s cubic-bezier(0.16,1,0.3,1)` | Section-level animations |
 | `--transition-fast` | `0.3s cubic-bezier(0.16,1,0.3,1)` | Hover/interactive transitions |
 
+### Typography Scale
+
+| Use | Font | Weight | Letter-spacing |
+|---|---|---|---|
+| Hero H1 | Playfair Display | 700 | -0.02em |
+| Section H2 | Playfair Display | 600 | 0 |
+| Card H3 | Outfit | 600 | 0.05em |
+| Body | Outfit | 400 | 0 |
+| Labels/Tags | Outfit | 500 | 0.12em uppercase |
+| CTA buttons | Outfit | 600 | 0.08em uppercase |
+
 ---
 
-## Page Sections (in order)
+## Ideal Page Structure (Client-Oriented)
+
+**Core principle:** User decides to trust in 0.05 seconds. Structure guides from CLIENT PAIN → OUR SOLUTION → PROOF → ACTION.
+
+Every section must answer: *"What does the client get?"* — not *"What do we offer?"*
+
+### Required sections in order:
+
+| # | Section ID | Purpose | Client-Oriented Rule |
+|---|---|---|---|
+| 1 | `#hero` | Hook — benefit-first headline | H1 must describe client benefit, not company name |
+| 2 | `#trust-bar` | Quick trust signals | Real numbers only — proof not vague claims |
+| 3 | `#services` | What problems we solve | Start with client pain point, then solution |
+| 4 | `#portfolio` | Visual proof | Real work, real results — no stock photos |
+| 5 | `#why-us` | Differentiators | Honest comparison, no "best/fastest/cheapest" |
+| 6 | `#process` | How it works | Reduce anxiety — show clear numbered steps |
+| 7 | `#testimonials` | Social proof | Real names, specific results, real locations |
+| 8 | `#faq` | Remove objections | Answer real questions clients ask |
+| 9 | `#cta` | One clear action | Single dominant CTA — no competing buttons |
+| 10 | `#contact` | Conversion | Max 4 fields — each extra field = -10% conversion |
+
+### CTA Rules
+
+- Primary CTA: specific result → **"Get a Free Estimate"** not "Contact Us"
+- Secondary CTA: **"View Our Work"** not "Learn More"
+- Every page section must have a visible path to the primary CTA
+- Mobile: sticky bottom bar with primary CTA always visible
+
+### Trust Signal Rules
+
+- Use real numbers: "127 completed projects" not "many projects"
+- Testimonials: full name + location + specific result
+- Certifications: show badge/logo, not just text
+- Never: "best in class", "industry leading", "we fix everything"
+
+---
+
+## Page Sections (current implementation)
 
 | Section ID | Description |
 |---|---|
-| `#hero` | Full-screen hero with animated headline |
-| `#expertise` | Three core expertise cards |
+| `#hero` | Full-screen hero — benefit-first headline + dual CTA |
+| `#trust-bar` | 4 trust numbers (projects, years, satisfaction, response) |
+| `#services` | Three core services as problem→solution cards |
 | `#portfolio` | 4-image portfolio gallery grid |
-| `#marble-showcase` | Interactive bookmatched marble widget |
-| `#philosophy` | Studio philosophy text block |
-| `#services` | Detailed services list |
-| `#testimonials` | Client testimonial quotes |
-| `#contact` | Contact form and studio details |
-
-Sections alternate between `--color-charcoal-dark` and `--color-charcoal-mid` backgrounds.
-All sections use the `.reveal` class and are animated in via `IntersectionObserver` on scroll.
+| `#why-us` | Differentiators + honest positioning + stat grid |
+| `#process` | 4-step service process |
+| `#testimonials` | Client testimonial quotes with names and locations |
+| `#faq` | Accordion FAQ — 6 common questions |
+| `#cta` | Final CTA band — single action |
+| `#contact` | Minimal contact form (4 fields max) |
 
 ---
 
 ## Coding Rules
 
 ### General
-- **No external libraries.** Do not add jQuery, Bootstrap, GSAP, or any npm package. The project is intentionally dependency-free.
-- **No inline styles on new elements.** Use CSS classes. Inline `style=""` attributes only exist in legacy markup — do not add new ones.
-- **All new CSS goes in the `<style>` block**, grouped under a clearly labelled comment block:
-  ```css
-  /* ==========================================================================
-     SECTION NAME
-     ========================================================================== */
-  ```
-- **All new JS goes in the `<script>` block** at the bottom of `index.html`, near related interactive code.
+- **No external libraries.** No jQuery, Bootstrap, GSAP, npm packages. Zero dependencies.
+- **No inline styles on new elements.** Use CSS classes only.
+- **All new CSS goes in the `<style>` block**, grouped under labelled comment blocks.
+- **All new JS goes in the `<script>` block** at the bottom of `index.html`.
 
 ### CSS
 - Use CSS custom properties for every color, font, and transition value.
-- Mobile-first is NOT used — desktop-first with `max-width` breakpoints. Primary breakpoint: `992px`.
-- Responsive collapse for grid layouts: `grid-template-columns: 1fr` at `max-width: 992px`.
-- Animations use `@keyframes` + `IntersectionObserver`. Do not use scroll-linked JS listeners.
+- Desktop-first with `max-width` breakpoints. Primary breakpoint: `992px`.
+- Responsive collapse: `grid-template-columns: 1fr` at `max-width: 992px`.
+- Animations use `@keyframes` + `IntersectionObserver`. No scroll-linked JS listeners.
 
 ### JavaScript
-- Pure ES6+ (no transpilation). Use `const`/`let`, arrow functions, template literals.
-- DOM queries with `document.getElementById` or `document.querySelector`.
-- Always guard DOM queries: `if (element) { ... }` before attaching event listeners.
+- Pure ES6+. Use `const`/`let`, arrow functions, template literals.
+- Guard all DOM queries: `if (element) { ... }` before attaching event listeners.
 - No `console.log` in committed code.
 
 ### HTML
 - Semantic elements: `<section>`, `<nav>`, `<header>`, `<footer>`, `<article>`.
-- New sections must include: `id=""`, `class="... reveal"` for scroll animation.
-- Brand name: **QSNera** (not AURELIA, not Aurelia, not QSnera — respect the exact casing).
+- New sections: `id=""`, `class="... reveal"` for scroll animation.
+- Brand name: **QSNera** (exact casing — not QSNERA, not QSnera).
 - Contact email: `inquire@qsnera.com`
 
 ---
 
 ## UI/UX & Design Guidelines
 
-> **Mandatory checklist for every frontend change.**
-> Before committing any modification to `index.html` (markup, styles, or scripts), Claude must verify all four areas below.
+> **Mandatory checklist before every commit to `index.html`.**
 
 ### 1. Responsiveness
-- Test every new layout at the primary breakpoint (`max-width: 992px`) — grids must collapse to a single column cleanly.
-- Check at three viewport widths: **375px** (mobile), **768px** (tablet), **1440px** (desktop).
-- No horizontal scroll at any breakpoint (`overflow-x: hidden` is set globally — do not break it).
-- Touch targets (buttons, links) must be at least **44×44 px** on mobile.
-- Text must remain legible (no overflow, no clipping) at all sizes.
+- Test at: **375px** (mobile), **768px** (tablet), **1440px** (desktop)
+- No horizontal scroll at any breakpoint
+- Touch targets minimum **44×44 px** on mobile
+- Sticky mobile CTA bar must always be visible on mobile
 
-### 2. Luxury Brand Compliance
-- **Every visual decision must feel premium.** QSNera targets high-end residential and commercial clients — nothing should look generic, cheap, or misaligned with the dark-gold aesthetic.
-- **Color:** Only use tokens from the Design System table. Never introduce new colors outside `:root`.
-- **Typography:** Headings → `--font-serif` (Playfair Display). Body/UI → `--font-sans` (Outfit). No other fonts.
-- **Spacing:** Sections use `padding: 10rem 0` on desktop, `6rem 0` on mobile — maintain this scale.
-- **Borders & dividers:** Always `1px solid var(--color-gold-border)` — never solid opaque borders.
-- **Imagery:** Assets are high-res stone/marble textures. Do not resize, compress, or replace without approval.
-- **Tone of UI copy:** Uppercase labels, wide letter-spacing (`letter-spacing: 0.1em`+), restrained punctuation. No playful or casual language.
+### 2. Premium Brand Compliance
+- Every decision must feel premium — QSNera targets high-end residential and commercial clients
+- **Color:** Only tokens from Design System table. No hardcoded values.
+- **Typography:** Headings → `--font-serif`. Body/UI → `--font-sans`. No other fonts.
+- **Spacing:** Sections `padding: 8rem 0` desktop, `6rem 0` mobile
+- **Borders:** Always `1px solid var(--color-border)` — never solid opaque
+- **Primary buttons:** `--color-indigo`. **Accent elements:** `--color-copper`.
 
-### 3. Accessibility (a11y)
-- All `<img>` elements must have a descriptive `alt` attribute.
-- Interactive elements (`<button>`, `<a>`) must be keyboard-focusable and have visible `:focus-visible` styles.
-- Color contrast ratio must meet **WCAG AA** minimum: 4.5:1 for body text, 3:1 for large text/UI components. Gold on dark backgrounds already passes — verify any new color combination.
-- Use semantic HTML: `<button>` for actions, `<a>` for navigation. Never use `<div>` as a click target.
-- Form inputs in `#contact` must have associated `<label>` elements.
-- Do not remove or override `aria-*` attributes without an explicit reason.
+### 3. Client-Oriented Checklist (May 2026)
+Before publishing any section, verify:
+- [ ] Headline describes client benefit, not company feature
+- [ ] CTA says what the client gets ("Get estimate" not "Submit")
+- [ ] Trust signals use real numbers, not vague claims
+- [ ] No fake testimonials, no stock photos of people
+- [ ] Form has 4 fields or fewer
+- [ ] Page has one dominant CTA — no competing buttons
 
-### 4. Animation Quality
-- All transitions must use the design system easing: `cubic-bezier(0.16, 1, 0.3, 1)` — this is a premium ease-out curve, not linear or ease-in-out.
-- Duration: `--transition-fast` (0.3s) for hover states; `--transition-smooth` (0.6s) for section/layout animations.
-- Scroll-reveal: use the existing `IntersectionObserver` + `.reveal` class. Do not add scroll event listeners.
-- Animations must respect `prefers-reduced-motion`:
-  ```css
-  @media (prefers-reduced-motion: reduce) {
-    /* disable or simplify animation */
-  }
-  ```
-- No jank: avoid animating `width`, `height`, `top`, `left`. Animate `transform` and `opacity` only.
-- The pulsing `.seam-pulse` and scroll-reveal timing must not be disrupted by new CSS additions.
+### 4. Accessibility (a11y)
+- All `<img>` must have descriptive `alt`
+- Interactive elements must be keyboard-focusable with visible `:focus-visible`
+- WCAG AA contrast: 4.5:1 for body, 3:1 for large text/UI
+- `<button>` for actions, `<a>` for navigation — never `<div>` as click target
+- Form inputs must have associated `<label>` elements
 
----
-
-## Key Interactions
-
-### Scroll Reveal Animation
-All `.reveal` elements animate in when they enter the viewport. Managed by `IntersectionObserver` — do not modify this system.
-
-### Bookmatched Marble Widget (`#marble-showcase`)
-- Two CSS slabs display the same `assets/hero-bg.png`; the right slab uses `transform: scaleX(-1)` to create a mirrored book-match effect.
-- Toggle buttons (`#btn-align-yes` / `#btn-align-no`) add/remove the `.misaligned` class on `#marble-slab-wall`.
-- `.misaligned .slab-right` applies `transform: scaleX(-1) translateY(-60px)` to break alignment.
+### 5. Animation Quality
+- Easing: `cubic-bezier(0.16, 1, 0.3, 1)` — premium ease-out only
+- Duration: `--transition-fast` (0.3s) hover; `--transition-smooth` (0.6s) layout
+- Scroll-reveal: existing `IntersectionObserver` + `.reveal` class
+- Must respect `prefers-reduced-motion`
+- Animate only `transform` and `opacity` — never width/height/top/left
 
 ---
 
@@ -190,12 +216,11 @@ git add -A
 git commit -m "feat: <short description>"
 ```
 
-There is no CI/CD pipeline. The site is deployed by copying files to a static host.
-
 ---
 
 ## Content Reference
 
-- **Full technical spec:** `Q&A/CLAUDE_TASK.md`  
-- **Copy brief:** `Q&A/QSNera_Content.md`  
-- **Personal project notes:** `Obsidian Vault/`
+- **Full technical spec:** `Q&A/CLAUDE_TASK.md`
+- **Copy brief:** `Q&A/QSNera_Content.md`
+- **Design research:** `Obsidian Vault/Бизнес QSNera/QSNera — Сайт/Цветовые палитры — исследование.md`
+- **Client-oriented principles:** `Obsidian Vault/Цифровой мозг/Ресурсы/Клиентоориентированный сайт — принципы.md`
