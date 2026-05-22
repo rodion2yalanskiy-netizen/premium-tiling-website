@@ -220,15 +220,30 @@
 
     .logo-mark {
       flex-shrink: 0;
-      transition: var(--transition-fast);
+      transition: filter var(--transition-fast);
+      display: block;
     }
 
-    .logo-mark path {
-      transition: stroke var(--transition-fast);
+    .logo:hover .logo-mark {
+      filter: brightness(1.3) drop-shadow(0 0 8px rgba(229, 205, 168, 0.35));
     }
 
-    .logo:hover .logo-mark path {
-      stroke: var(--color-gold-bright);
+    /* ==========================================================================
+       SECTION DIVIDER
+       ========================================================================== */
+    .section-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 4.5rem;
+      width: 100%;
+    }
+
+    .section-divider img {
+      display: block;
+      width: min(860px, 88%);
+      height: auto;
+      opacity: 0.82;
     }
 
     .logo-text {
@@ -1443,11 +1458,7 @@
   <header id="header">
     <div class="container nav-wrapper">
       <a href="#hero" class="logo" id="logo-link" aria-label="QSNera – home">
-        <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="34" height="34" aria-hidden="true">
-          <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="#c5a880" stroke-width="1"/>
-          <path d="M18 8 L28 18 L18 28 L8 18 Z" fill="none" stroke="#c5a880" stroke-width="0.6" opacity="0.5"/>
-          <circle cx="18" cy="18" r="2.5" fill="#c5a880" opacity="0.8"/>
-        </svg>
+        <img src="assets/qsnera-mark.svg" class="logo-mark" width="38" height="38" alt="" aria-hidden="true">
         <div class="logo-text">
           QSNera
           <span>Stone &amp; Tile Studio</span>
@@ -1505,6 +1516,9 @@
           "A perfect installation respects the raw nature of the stone while integrating flawlessly with modern architecture."
         </div>
       </div>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
+      </div>
     </div>
   </section>
 
@@ -1551,6 +1565,9 @@
           <a href="#portfolio" class="btn-gold">Explore Marble Projects</a>
         </div>
 
+      </div>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
       </div>
     </div>
   </section>
@@ -1611,10 +1628,13 @@
             <p class="service-desc">Schluter-certified waterproofing, custom linear floor drains, curbless thresholds, and integrated steam showers.</p>
           </div>
           <a href="#contact" class="service-link">
-            Inquire 
+            Inquire
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+      </div>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
       </div>
     </div>
   </section>
@@ -1667,6 +1687,9 @@
             <span class="portfolio-material">Honed &amp; Filled Travertine Slabs</span>
           </div>
         </div>
+      </div>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
       </div>
     </div>
   </section>
@@ -1735,6 +1758,9 @@
           </div>
         </div>
       </div>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
+      </div>
     </div>
   </section>
 
@@ -1794,6 +1820,9 @@
           <div class="form-feedback" id="form-feedback-message"></div>
         </div>
       </form>
+      <div class="section-divider" aria-hidden="true">
+        <img src="assets/qsnera-divider.svg" alt="">
+      </div>
     </div>
   </section>
 
@@ -1848,11 +1877,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#hero" class="logo" aria-label="QSNera – home">
-          <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="30" height="30" aria-hidden="true">
-            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="#c5a880" stroke-width="1"/>
-            <path d="M18 8 L28 18 L18 28 L8 18 Z" fill="none" stroke="#c5a880" stroke-width="0.6" opacity="0.5"/>
-            <circle cx="18" cy="18" r="2.5" fill="#c5a880" opacity="0.8"/>
-          </svg>
+          <img src="assets/qsnera-mark.svg" class="logo-mark" width="32" height="32" alt="" aria-hidden="true">
           <div class="logo-text">
             QSNera
             <span>Stone &amp; Tile Studio</span>
