@@ -199,3 +199,4 @@ There is no CI/CD pipeline. The site is deployed by copying files to a static ho
 - **Full technical spec:** `Q&A/CLAUDE_TASK.md`  
 - **Copy brief:** `Q&A/QSNera_Content.md`  
 - **Personal project notes:** `Obsidian Vault/`
+<!-- hook-test: Thu May 21 18:10:57 PDT 2026 -->
