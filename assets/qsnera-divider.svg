@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QSNera Studio — Section Divider
+  =================================
+  A luxury horizontal rule for use between page sections.
+  Features a center diamond with concentric inner ring + pulse dot,
+  flanked by symmetric tick marks that diminish in size outward.
+  The line itself fades to transparent at both edges via gradient.
+
+  Usage:
+    <img src="assets/qsnera-divider.svg" alt="" aria-hidden="true">
+    Recommended width: 100% or max 800px, height: auto.
+    Works on both --color-charcoal-dark and --color-charcoal-mid backgrounds.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 44"
+     width="800" height="44"
+     role="img"
+     aria-label="QSNera decorative section divider">
+
+  <defs>
+
+    <!-- Line gradient: opaque center, fades to transparent at edges -->
+    <linearGradient id="qsn-line-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#c5a880" stop-opacity="0"/>
+      <stop offset="12%"  stop-color="#c5a880" stop-opacity="0.45"/>
+      <stop offset="38%"  stop-color="#e5cda8" stop-opacity="0.70"/>
+      <stop offset="50%"  stop-color="#e5cda8" stop-opacity="0.85"/>
+      <stop offset="62%"  stop-color="#e5cda8" stop-opacity="0.70"/>
+      <stop offset="88%"  stop-color="#c5a880" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#c5a880" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Radial glow behind the center diamond -->
+    <radialGradient id="qsn-center-glow" cx="400" cy="22" r="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#c5a880" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#c5a880" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+
+  <!-- ── 1. Main horizontal rule ──────────────────────────────────────── -->
+  <line x1="0" y1="22" x2="800" y2="22"
+        stroke="url(#qsn-line-fade)" stroke-width="0.7"/>
+
+
+  <!-- ── 2. Radial glow behind center diamond ─────────────────────────── -->
+  <ellipse cx="400" cy="22" rx="36" ry="28" fill="url(#qsn-center-glow)"/>
+
+
+  <!-- ── 3. Center diamond — outer ring ───────────────────────────────── -->
+  <polygon points="400,5  422,22  400,39  378,22"
+           fill="none" stroke="#c5a880" stroke-width="0.9" opacity="0.95"/>
+
+  <!-- Center diamond — inner ring -->
+  <polygon points="400,10  417,22  400,34  383,22"
+           fill="none" stroke="#c5a880" stroke-width="0.5" opacity="0.45"/>
+
+  <!-- Center dot -->
+  <circle cx="400" cy="22" r="2.2" fill="#c5a880" opacity="0.95"/>
+
+
+  <!-- ── 4. Left accent ticks (diminishing outward) ───────────────────── -->
+  <!-- Primary tick — 80px from center -->
+  <line x1="320" y1="14" x2="320" y2="30"
+        stroke="#c5a880" stroke-width="0.7" opacity="0.58"/>
+  <!-- Secondary tick — 160px from center -->
+  <line x1="240" y1="17" x2="240" y2="27"
+        stroke="#c5a880" stroke-width="0.6" opacity="0.38"/>
+  <!-- Tertiary tick — 240px from center -->
+  <line x1="160" y1="18" x2="160" y2="26"
+        stroke="#c5a880" stroke-width="0.5" opacity="0.22"/>
+  <!-- Quaternary tick — 320px from center -->
+  <line x1="80" y1="19" x2="80" y2="25"
+        stroke="#c5a880" stroke-width="0.4" opacity="0.14"/>
+
+
+  <!-- ── 5. Right accent ticks (mirror of left) ───────────────────────── -->
+  <!-- Primary tick -->
+  <line x1="480" y1="14" x2="480" y2="30"
+        stroke="#c5a880" stroke-width="0.7" opacity="0.58"/>
+  <!-- Secondary tick -->
+  <line x1="560" y1="17" x2="560" y2="27"
+        stroke="#c5a880" stroke-width="0.6" opacity="0.38"/>
+  <!-- Tertiary tick -->
+  <line x1="640" y1="18" x2="640" y2="26"
+        stroke="#c5a880" stroke-width="0.5" opacity="0.22"/>
+  <!-- Quaternary tick -->
+  <line x1="720" y1="19" x2="720" y2="25"
+        stroke="#c5a880" stroke-width="0.4" opacity="0.14"/>
+
+</svg>

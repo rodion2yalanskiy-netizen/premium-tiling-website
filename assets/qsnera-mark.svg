@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QSNera Studio — Monogram Emblem
+  ================================
+  Concept: A diamond-framed seal with bookmatched marble veins radiating
+  symmetrically from the center seam axis — a direct visual metaphor for
+  QSNera's signature bookmatched marble installation craft.
+
+  Design system:
+    Gold matte   #c5a880   Primary strokes, frame
+    Gold bright  #e5cda8   Gradient highlight, text
+    Gold dark    #8c7352   Gradient shadow
+    Background   transparent (adapts to any dark section)
+
+  Usage:
+    <img src="assets/qsnera-mark.svg" alt="QSNera Studio" width="200" height="200">
+    Or as CSS background-image on a pseudo-element.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 400"
+     width="400" height="400"
+     role="img"
+     aria-label="QSNera Studio emblem">
+  <title>QSNera Studio</title>
+
+  <defs>
+
+    <!-- Primary diagonal gold gradient (top-left → bottom-right) -->
+    <linearGradient id="qsn-gold" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#e5cda8"/>
+      <stop offset="45%"  stop-color="#c5a880"/>
+      <stop offset="100%" stop-color="#8c7352"/>
+    </linearGradient>
+
+    <!-- Reverse diagonal — used for mirrored right-side veins -->
+    <linearGradient id="qsn-gold-r" x1="400" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#e5cda8"/>
+      <stop offset="55%"  stop-color="#c5a880"/>
+      <stop offset="100%" stop-color="#8c7352"/>
+    </linearGradient>
+
+    <!-- Radial glow at center — very subtle warmth -->
+    <radialGradient id="qsn-glow" cx="200" cy="200" r="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#c5a880" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#c5a880" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Clip to diamond so vein lines don't bleed outside the frame -->
+    <clipPath id="qsn-diam-clip">
+      <polygon points="200,17 383,200 200,383 17,200"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- ── 0. Subtle center glow ─────────────────────────────────────────── -->
+  <polygon points="200,17 383,200 200,383 17,200" fill="url(#qsn-glow)"/>
+
+
+  <!-- ── 1. Bookmatched marble vein system ─────────────────────────────── -->
+  <!--
+    Each vein is drawn in the left half, then its exact mirror in the right
+    half (reflecting x around the seam axis x=200, i.e. new_x = 400 − x).
+    All veins converge at x=200 so they appear to "seal" at the joint line.
+  -->
+  <g clip-path="url(#qsn-diam-clip)">
+
+    <!-- Vein 1 — primary sweep, mid-upper zone (most prominent) -->
+    <path d="M 28,138  C 78,116  118,178  158,170  S 196,178  200,180"
+          stroke="#c5a880" stroke-width="1.2" fill="none" opacity="0.60"/>
+    <path d="M 372,138  C 322,116  282,178  242,170  S 204,178  200,180"
+          stroke="#c5a880" stroke-width="1.2" fill="none" opacity="0.60"/>
+
+    <!-- Vein 2 — secondary sweep, mid-lower zone -->
+    <path d="M 24,252  C 72,232  116,272  160,252  S 196,232  200,235"
+          stroke="#c5a880" stroke-width="1.0" fill="none" opacity="0.48"/>
+    <path d="M 376,252  C 328,232  284,272  240,252  S 204,232  200,235"
+          stroke="#c5a880" stroke-width="1.0" fill="none" opacity="0.48"/>
+
+    <!-- Vein 3 — fine arc, upper portion, gold-bright tone -->
+    <path d="M 112,52   C 134,96   156,145  174,172  S 198,186  200,188"
+          stroke="#e5cda8" stroke-width="0.7" fill="none" opacity="0.38"/>
+    <path d="M 288,52   C 266,96   244,145  226,172  S 202,186  200,188"
+          stroke="#e5cda8" stroke-width="0.7" fill="none" opacity="0.38"/>
+
+    <!-- Vein 4 — fine arc, lower portion -->
+    <path d="M 100,344  C 125,308  152,264  174,232  S 198,214  200,212"
+          stroke="#e5cda8" stroke-width="0.7" fill="none" opacity="0.33"/>
+    <path d="M 300,344  C 275,308  248,264  226,232  S 202,214  200,212"
+          stroke="#e5cda8" stroke-width="0.7" fill="none" opacity="0.33"/>
+
+    <!-- Vein 5 — whisper vein, barely visible, adds depth -->
+    <path d="M 52,172  C 92,158  124,196  162,190  S 197,186  200,187"
+          stroke="#c5a880" stroke-width="0.5" fill="none" opacity="0.22"/>
+    <path d="M 348,172  C 308,158  276,196  238,190  S 203,186  200,187"
+          stroke="#c5a880" stroke-width="0.5" fill="none" opacity="0.22"/>
+
+    <!-- Vein 6 — whisper vein, lower counterpart -->
+    <path d="M 58,228  C 96,216  128,240  165,228  S 197,218  200,219"
+          stroke="#c5a880" stroke-width="0.5" fill="none" opacity="0.20"/>
+    <path d="M 342,228  C 304,216  272,240  235,228  S 203,218  200,219"
+          stroke="#c5a880" stroke-width="0.5" fill="none" opacity="0.20"/>
+
+  </g>
+
+
+  <!-- ── 2. Center seam line (the bookmatching axis) ───────────────────── -->
+  <line x1="200" y1="17" x2="200" y2="383"
+        stroke="url(#qsn-gold)" stroke-width="0.5" opacity="0.45"/>
+
+
+  <!-- ── 3. Inner ring diamond ─────────────────────────────────────────── -->
+  <polygon points="200,92  308,200  200,308  92,200"
+           fill="none" stroke="url(#qsn-gold)" stroke-width="0.5" opacity="0.28"/>
+
+
+  <!-- ── 4. Outer diamond frame ─────────────────────────────────────────── -->
+  <polygon points="200,17  383,200  200,383  17,200"
+           fill="none" stroke="url(#qsn-gold)" stroke-width="1.6"/>
+
+
+  <!-- ── 5. Corner accent dots & wing marks ────────────────────────────── -->
+  <!-- Dots at the four cardinal points of the diamond -->
+  <circle cx="200" cy="17"  r="3.5" fill="#c5a880"/>
+  <circle cx="383" cy="200" r="3.5" fill="#c5a880"/>
+  <circle cx="200" cy="383" r="3.5" fill="#c5a880"/>
+  <circle cx="17"  cy="200" r="3.5" fill="#c5a880"/>
+
+  <!-- Wing tick marks flanking top corner -->
+  <line x1="185" y1="30"  x2="200" y2="17"  stroke="#c5a880" stroke-width="0.8" opacity="0.55"/>
+  <line x1="215" y1="30"  x2="200" y2="17"  stroke="#c5a880" stroke-width="0.8" opacity="0.55"/>
+  <!-- Wing tick marks flanking bottom corner -->
+  <line x1="185" y1="370" x2="200" y2="383" stroke="#c5a880" stroke-width="0.8" opacity="0.55"/>
+  <line x1="215" y1="370" x2="200" y2="383" stroke="#c5a880" stroke-width="0.8" opacity="0.55"/>
+
+
+  <!-- ── 6. Typographic frame — rules + center diamond accent ──────────── -->
+  <!-- Horizontal rule above monogram -->
+  <line x1="130" y1="163" x2="270" y2="163"
+        stroke="url(#qsn-gold)" stroke-width="0.6" opacity="0.85"/>
+  <!-- Tiny diamond jewel centered on the rule -->
+  <polygon points="200,156  208,163  200,170  192,163"
+           fill="#c5a880" opacity="0.9"/>
+
+
+  <!-- ── 7. QS Monogram ─────────────────────────────────────────────────── -->
+  <text x="200" y="213"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="60"
+        font-weight="400"
+        fill="url(#qsn-gold)"
+        text-anchor="middle"
+        letter-spacing="10">QS</text>
+
+
+  <!-- ── 8. Rule below monogram ────────────────────────────────────────── -->
+  <line x1="148" y1="228" x2="252" y2="228"
+        stroke="url(#qsn-gold)" stroke-width="0.6" opacity="0.85"/>
+
+
+  <!-- ── 9. Studio wordmark ────────────────────────────────────────────── -->
+  <text x="200" y="250"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="10"
+        font-weight="300"
+        fill="#c5a880"
+        text-anchor="middle"
+        letter-spacing="5.5"
+        opacity="0.88">STUDIO</text>
+
+</svg>
