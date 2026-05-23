@@ -270,6 +270,50 @@
       .why-stat-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
     }
+
+    /* === Floating CTA Button === */
+    .cta-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.4rem;
+      background: #d4a843;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(212,168,67,0.4);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease,
+                  box-shadow 0.3s ease, background 0.3s ease;
+      pointer-events: none;
+    }
+    .cta-float.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .cta-float:hover {
+      background: #e8bb55;
+      box-shadow: 0 6px 28px rgba(212,168,67,0.6);
+      transform: translateY(-2px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-float { transition: opacity 0.4s ease; }
+      .cta-float:hover { transform: none; }
+    }
+    @media (max-width: 768px) {
+      .cta-float span { display: none; }
+      .cta-float { padding: 1rem; border-radius: 50%; bottom: 1.5rem; right: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -544,6 +588,20 @@
         nav.style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
       }, { passive: true });
     }
+
+    // Floating CTA — появляется через 3 сек после загрузки
+    setTimeout(() => {
+      const ctaBtn = document.getElementById('ctaFloat');
+      if (ctaBtn) ctaBtn.classList.add('visible');
+    }, 3000);
   </script>
+
+  <!-- Floating CTA Button -->
+  <a href="#contact" class="cta-float" id="ctaFloat" aria-label="Получить консультацию">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+    </svg>
+    <span>Консультация</span>
+  </a>
 </body>
 </html>
