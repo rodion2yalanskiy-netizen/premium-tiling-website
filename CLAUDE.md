@@ -208,6 +208,54 @@ Before publishing any section, verify:
 
 ---
 
+## Token Efficiency Rules
+
+> Apply these in every session to keep context lean and responses fast.
+
+- Reply concisely — no explanations unless asked
+- Never repeat entire files — show only changed functions (diff-format)
+- For large files, output only the modified block with surrounding context (~10 lines)
+- Write pseudocode / bullet plan first, then generate full code
+- Ask clarifying questions before generating — one round of questions saves many rounds of regeneration
+- Use `/compact` in Claude Code to compress context when token count grows
+- Break large tasks into small focused sessions; store state in files, not context
+
+---
+
+## QA Testing Checklist
+
+> Run through this before every PR / deployment of `index.html`.
+
+### Functionality
+- [ ] All buttons are clickable and respond correctly
+- [ ] Contact form validates (required fields, email format) and submits
+- [ ] Nav links scroll to correct sections
+- [ ] FAQ accordion opens / closes
+- [ ] Mobile menu works (hamburger → overlay)
+
+### Visual / Layout
+- [ ] No broken images (all `assets/` files load)
+- [ ] No text overflow at any breakpoint
+- [ ] Consistent spacing and typography across sections
+- [ ] Correct render at **375px** mobile
+- [ ] Correct render at **768px** tablet
+- [ ] Correct render at **1440px** desktop
+- [ ] No horizontal scroll at any breakpoint
+
+### Performance
+- [ ] Lighthouse score > 80 on all metrics (Performance, Accessibility, SEO, Best Practices)
+- [ ] No errors in browser console
+- [ ] Images are optimised (no raw PNGs > 500 KB)
+
+### Accessibility
+- [ ] All `<img>` have descriptive `alt` text
+- [ ] Keyboard navigation works (Tab / Enter / Space)
+- [ ] Color contrast meets WCAG AA (4.5:1 body, 3:1 large text)
+- [ ] All form inputs have associated `<label>` elements
+- [ ] Focus outlines visible on interactive elements
+
+---
+
 ## Git Workflow
 
 ```bash
