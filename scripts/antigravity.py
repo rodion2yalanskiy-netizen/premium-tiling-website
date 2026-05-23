@@ -12,7 +12,7 @@ from pathlib import Path
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 TASK_FILE = os.environ.get("TASK_FILE", "")
-MODEL = "anthropic/claude-sonnet-4-20250514"
+MODEL = "anthropic/claude-sonnet-4.5"
 MAX_TOKENS = 2000
 
 
