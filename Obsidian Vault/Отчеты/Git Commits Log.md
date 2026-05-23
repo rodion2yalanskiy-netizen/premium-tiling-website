@@ -13,3 +13,7 @@
 | `9f16ca6` | 2026-05-22 22:20 | feat: расширение портфолио — добавлены 10 новых проектов |
 | `63055e1` | 2026-05-22 22:32 | feat: обновить копирайт в footer — © 2026 QSNera. Luxury Tile & Stone Studio. |
 | `59a6ead` | 2026-05-23 00:24 | feat: прокачка скилла — Token Efficiency Rules и QA Checklist в CLAUDE.md |
+| `52560e9` | 2026-05-23 14:22 | feat: GitHub Actions agent pipeline via OpenRouter |
+| `2e15f9b` | 2026-05-23 14:23 | fix: correct OpenRouter model ID (claude-sonnet-4.5) |
+| `c74e7d2` | 2026-05-23 14:24 | test: trigger agent pipeline (model fix) |
+| `28415d9` | 2026-05-23 14:25 | fix: add git config to workflow, update test task |
