@@ -256,6 +256,68 @@ Before publishing any section, verify:
 
 ---
 
+## Autonomous Code Quality — Auto-Check After Every Change
+
+> Run ALL of these after modifying `index.html`. Fix every error before committing.
+
+### 1. HTML Validation
+```bash
+npx htmlhint index.html
+# Must output: "0 problems"
+```
+
+### 2. CSS Check (inline styles are valid here — skip file check)
+```bash
+# Check for forbidden hardcoded values (no #hex or rgb() outside :root)
+grep -n "color: #\|color: rgb\|font-family: ['\"]" index.html | grep -v ":root" | grep -v "var(--"
+# Must output nothing (empty = OK)
+```
+
+### 3. JavaScript Syntax Check
+```bash
+node --check index.html 2>/dev/null || \
+  grep -o '<script[^>]*>.*</script>' index.html | node --input-type=module 2>&1 | head -5
+```
+
+### 4. Lighthouse Audit (run after `python3 -m http.server 8080`)
+```bash
+npx lighthouse http://localhost:8080 --only-categories=performance,accessibility,seo,best-practices \
+  --output=json --quiet 2>/dev/null | python3 -c "
+import json,sys; d=json.load(sys.stdin)
+cats = d['categories']
+for k,v in cats.items():
+    score = int(v['score']*100)
+    flag = '✅' if score>=80 else '❌'
+    print(f'{flag} {k}: {score}')
+"
+```
+
+### 5. Accessibility Check
+```bash
+npx axe http://localhost:8080 --exit 2>/dev/null | tail -5
+```
+
+### Self-Verification Protocol
+Before every commit, Claude MUST:
+1. Run htmlhint — fix any errors found
+2. Check no hardcoded colors outside `:root`
+3. Confirm all new `<img>` have `alt` attributes
+4. Verify no new `console.log` statements added
+5. Test that JS has no syntax errors
+
+---
+
+## Autonomous Problem Solving
+
+When blocked on a task, use this sequence (without asking the user):
+1. Re-read CLAUDE.md for constraints
+2. Check existing code patterns in `index.html` for reference
+3. Try the simplest solution first
+4. If an approach fails, try the next one
+5. Only report back when task is **done** or truly **impossible**
+
+---
+
 ## Git Workflow
 
 ```bash
