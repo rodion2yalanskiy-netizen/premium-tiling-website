@@ -1,0 +1,59 @@
+name: Code Quality Check
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'assets/**'
+  pull_request:
+    paths:
+      - 'index.html'
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install tools
+        run: npm install -g htmlhint
+
+      - name: HTML validation
+        run: |
+          echo "=== HTMLHint ==="
+          htmlhint index.html || true
+
+      - name: Check hardcoded colors
+        run: |
+          echo "=== Hardcoded colors ==="
+          VIOLATIONS=$(grep -n "color: #\|color: rgb" index.html | grep -v ":root" | grep -v "var(--" || true)
+          if [ -n "$VIOLATIONS" ]; then
+            echo "WARNING: hardcoded colors found:"
+            echo "$VIOLATIONS"
+          else
+            echo "OK: no hardcoded colors"
+          fi
+
+      - name: Check console.log
+        run: |
+          echo "=== console.log ==="
+          grep -n "console\.log" index.html && echo "WARNING: remove before deploy" || echo "OK: none found"
+
+      - name: Check img alt attributes
+        run: |
+          echo "=== img alt ==="
+          MISSING=$(grep -n "<img" index.html | grep -v 'alt=' || true)
+          if [ -n "$MISSING" ]; then
+            echo "WARNING: img without alt:"
+            echo "$MISSING"
+          else
+            echo "OK: all img have alt"
+          fi
