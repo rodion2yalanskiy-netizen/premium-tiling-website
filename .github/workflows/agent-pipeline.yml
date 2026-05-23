@@ -1,0 +1,64 @@
+name: Agent Pipeline (OpenRouter)
+
+on:
+  push:
+    paths:
+      - 'tasks/**'
+  workflow_dispatch:
+    inputs:
+      task_file:
+        description: 'Task file name (relative to tasks/)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Find changed task file
+        id: find_task
+        env:
+          INPUT_TASK_FILE: ${{ github.event.inputs.task_file }}
+        run: |
+          if [ -n "$INPUT_TASK_FILE" ]; then
+            TASK_FILE="tasks/$INPUT_TASK_FILE"
+          else
+            TASK_FILE=$(git diff --name-only HEAD~1 HEAD 2>/dev/null | grep '^tasks/.*\.md$' | head -1)
+            if [ -z "$TASK_FILE" ]; then
+              TASK_FILE=$(ls -t tasks/*.md 2>/dev/null | head -1)
+            fi
+          fi
+          echo "task_file=$TASK_FILE" >> $GITHUB_OUTPUT
+          echo "Found task: $TASK_FILE"
+
+      - name: Run agent (OpenRouter)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          TASK_FILE: ${{ steps.find_task.outputs.task_file }}
+        run: python scripts/antigravity.py
+
+      - name: Save report and commit
+        env:
+          TASK_FILE: ${{ steps.find_task.outputs.task_file }}
+        run: python scripts/save_report.py
+
+      - name: Push report
+        run: git push origin main
