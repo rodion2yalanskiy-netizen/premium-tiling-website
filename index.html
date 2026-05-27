@@ -5,28 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QSNera — Luxury Tile & Stone Installation</title>
   <meta name="description" content="Premium tile and stone installation for residential and commercial estates. Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro." />
+  <link rel="canonical" href="https://qsnera.com/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://qsnera.com/" />
+  <meta property="og:title" content="QSNera — Luxury Tile & Stone Installation" />
+  <meta property="og:description" content="Premium tile and stone installation for residential and commercial estates. Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro." />
+  <meta property="og:image" content="assets/hero-bg.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QSNera — Luxury Tile & Stone Installation" />
+  <meta name="twitter:description" content="Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro luxury tile studio." />
+  <meta name="twitter:image" content="assets/hero-bg.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     /* ==========================================================================
-       DESIGN TOKENS — Dark Navy + Copper-Gold + Warm Cream
-       Updated: May 2026 — based on trust+premium research (variants 4+5 merged)
+       DESIGN TOKENS — Charcoal + Matte Gold
+       Updated: May 2026 — aligned with design system (Дизайн-система.md)
+       Palette: #0d0d0d charcoal · #c5a880 gold-matte · #f5f5f7 white
        ========================================================================== */
     :root {
-      --color-bg-dark:       #0D1B2E;
-      --color-bg-mid:        #0F2035;
-      --color-bg-card:       #152845;
-      --color-bg-accent:     #1A1035;
-      --color-copper:        #C8903A;
-      --color-copper-bright: #E8B86D;
-      --color-copper-dark:   #8A6028;
-      --color-indigo:        #4F46E5;
-      --color-indigo-hover:  #6366F1;
-      --color-cream:         #F5ECD7;
-      --color-cream-dim:     #B8A99A;
-      --color-border:        rgba(200,144,58,0.18);
+      --color-bg-dark:       #0d0d0d;
+      --color-bg-mid:        #161618;
+      --color-bg-card:       #222224;
+      --color-bg-accent:     #111113;
+      --color-copper:        #c5a880;
+      --color-copper-bright: #e5cda8;
+      --color-copper-dark:   #8c7352;
+      --color-cream:         #f5f5f7;
+      --color-cream-dim:     #a1a1a6;
+      --color-border:        rgba(197,168,128,0.15);
       --font-serif:  'Playfair Display', Georgia, serif;
       --font-sans:   'Outfit', system-ui, sans-serif;
       --transition-smooth: 0.6s cubic-bezier(0.16,1,0.3,1);
@@ -289,6 +301,72 @@
       .footer-grid { grid-template-columns: 1fr; }
     }
 
+    /* QSNERA MARK in NAV */
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo-mark {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      opacity: 0.92;
+      transition: opacity var(--transition-fast);
+    }
+    .nav-logo:hover .nav-logo-mark { opacity: 1; }
+
+    /* SECTION DIVIDER */
+    .section-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .section-divider img {
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      opacity: 0.7;
+      display: block;
+    }
+
+    /* FOOTER EMBLEM */
+    .footer-mark-emblem {
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin-top: 1.5rem;
+      opacity: 0.55;
+      transition: opacity var(--transition-fast);
+    }
+    .footer-brand:hover .footer-mark-emblem { opacity: 0.8; }
+
+    /* FORM SUCCESS STATE */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .form-success h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-cream);
+      margin-bottom: 0.75rem;
+    }
+    .form-success p {
+      color: var(--color-cream-dim);
+      font-size: 0.95rem;
+    }
+
     /* NAV TOGGLE (hamburger) */
     .nav-toggle {
       display: none;
@@ -369,7 +447,10 @@
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">QS<span>Nera</span></a>
+      <a href="#hero" class="nav-logo" aria-label="QSNera — Home">
+        <img src="assets/qsnera-mark.svg" alt="" class="nav-logo-mark" aria-hidden="true" width="28" height="28" />
+        QS<span>Nera</span>
+      </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
