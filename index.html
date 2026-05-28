@@ -1,780 +1,952 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QSNera — Luxury Tile & Stone Installation</title>
-  <meta name="description" content="Premium tile and stone installation for residential and commercial estates. Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro." />
-  <link rel="canonical" href="https://qsnera.com/" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://qsnera.com/" />
-  <meta property="og:title" content="QSNera — Luxury Tile & Stone Installation" />
-  <meta property="og:description" content="Premium tile and stone installation for residential and commercial estates. Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro." />
-  <meta property="og:image" content="assets/hero-bg.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="QSNera — Luxury Tile & Stone Installation" />
-  <meta name="twitter:description" content="Bookmatched marble, large-format porcelain, handcrafted Zellige. Portland Metro luxury tile studio." />
-  <meta name="twitter:image" content="assets/hero-bg.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom:Void — Web Development Studio</title>
+  <meta name="description" content="Axiom:Void is a web development studio crafting precise digital products. UI/UX, backend architecture, AI integrations, and technical audits.">
+  <meta property="og:title" content="Axiom:Void — Web Development Studio">
+  <meta property="og:description" content="We code the vacuum. Precision web development and digital products.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axiom-void.dev">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       DESIGN TOKENS — Charcoal + Matte Gold
-       Updated: May 2026 — aligned with design system (Дизайн-система.md)
-       Palette: #0d0d0d charcoal · #c5a880 gold-matte · #f5f5f7 white
-       ========================================================================== */
+    /* ═══════════════════════════════════
+       DESIGN TOKENS — Axiom:Void
+    ═══════════════════════════════════ */
     :root {
-      --color-bg-dark:       #0d0d0d;
-      --color-bg-mid:        #161618;
-      --color-bg-card:       #222224;
-      --color-bg-accent:     #111113;
-      --color-copper:        #c5a880;
-      --color-copper-bright: #e5cda8;
-      --color-copper-dark:   #8c7352;
-      --color-cream:         #f5f5f7;
-      --color-cream-dim:     #a1a1a6;
-      --color-border:        rgba(197,168,128,0.15);
-      --font-serif:  'Playfair Display', Georgia, serif;
-      --font-sans:   'Outfit', system-ui, sans-serif;
-      --transition-smooth: 0.6s cubic-bezier(0.16,1,0.3,1);
-      --transition-fast:   0.3s cubic-bezier(0.16,1,0.3,1);
+      --color-bg:          #000000;
+      --color-surface:     #111111;
+      --color-card:        #1A1A1A;
+      --color-accent:      #00D4FF;
+      --color-accent-dim:  #0099BB;
+      --color-accent-glow: rgba(0, 212, 255, 0.15);
+      --color-text:        #E8E8E8;
+      --color-text-dim:    #888888;
+      --color-border:      rgba(0, 212, 255, 0.15);
+      --color-border-dim:  rgba(255, 255, 255, 0.06);
+
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-sans: 'Inter', sans-serif;
+
+      --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast:   0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      --max-width: 1200px;
+      --section-pad: clamp(60px, 8vw, 120px);
     }
 
+    /* ═══════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     body {
-      background-color: var(--color-bg-dark);
-      color: var(--color-cream);
+      background: var(--color-bg);
+      color: var(--color-text);
       font-family: var(--font-sans);
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
 
-    h1, h2, h3 { font-family: var(--font-serif); line-height: 1.2; }
-    .label {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-copper);
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 5vw, 48px);
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 2rem;
-      border-radius: 4px;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+    /* ═══════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════ */
+    h1, h2, h3 { font-family: var(--font-mono); font-weight: 700; line-height: 1.2; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      border: none;
-      min-height: 44px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
     }
-    .btn-primary { background: var(--color-copper); color: #0d0d0d; }
-    .btn-primary:hover { background: var(--color-copper-bright); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--color-cream); border: 1px solid var(--color-border); }
-    .btn-outline:hover { border-color: var(--color-copper); color: var(--color-copper-bright); transform: translateY(-2px); }
+    .section-label::before { content: '// '; opacity: 0.5; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .section { padding: 8rem 0; }
-    .section-alt { background: var(--color-bg-mid); }
-    .section-accent { background: var(--color-bg-accent); }
-    .section-header { text-align: center; max-width: 640px; margin: 0 auto 5rem; }
-    .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 1rem; }
-    .section-header p { color: var(--color-cream-dim); margin-top: 1rem; font-size: 1.05rem; }
-    .divider { width: 48px; height: 2px; background: var(--color-copper); margin: 1.5rem auto; }
+    /* ═══════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--transition-smooth), transform var(--transition-smooth); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
-
-    /* NAV */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.25rem 0;
-      background: rgba(13,13,13,0.92);
+    /* ═══════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-      transition: var(--transition-fast);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-cream); letter-spacing: 0.04em; }
-    .nav-logo span { color: var(--color-copper); }
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-cream-dim); transition: var(--transition-fast); }
-    .nav-links a:hover { color: var(--color-cream); }
-    .nav-cta { margin-left: 1rem; }
-
-    /* HERO */
-    #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg, rgba(13,13,13,0.97) 0%, rgba(22,22,24,0.85) 60%, rgba(13,13,13,0.95) 100%),
-        url('assets/hero-bg.png') center/cover no-repeat;
-    }
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(79,70,229,0.12) 0%, transparent 70%);
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 760px; }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem; }
-    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--color-copper); }
-    #hero h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); font-weight: 700; color: var(--color-cream); line-height: 1.12; margin-bottom: 1.5rem; }
-    #hero h1 em { font-style: italic; color: var(--color-copper-bright); }
-    .hero-sub { font-size: 1.1rem; color: var(--color-cream-dim); max-width: 560px; margin-bottom: 2.5rem; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-    .hero-note { margin-top: 1.5rem; font-size: 0.8rem; color: var(--color-cream-dim); opacity: 0.7; }
-
-    /* TRUST BAR */
-    #trust-bar { background: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 2.5rem 0; }
-    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-    .trust-item { text-align: center; padding: 1rem; border-right: 1px solid var(--color-border); }
-    .trust-item:last-child { border-right: none; }
-    .trust-number { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 700; color: var(--color-copper); line-height: 1; margin-bottom: 0.35rem; }
-    .trust-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-cream-dim); }
-
-    /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .service-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 8px; padding: 2.5rem 2rem; transition: var(--transition-fast); position: relative; overflow: hidden; }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--color-copper), var(--color-indigo)); opacity: 0; transition: var(--transition-fast); }
-    .service-card:hover { transform: translateY(-6px); border-color: rgba(200,144,58,0.35); }
-    .service-card:hover::before { opacity: 1; }
-    .service-icon { width: 52px; height: 52px; background: rgba(200,144,58,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
-    .service-problem { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 0.5rem; }
-    .service-card h3 { font-family: var(--font-sans); font-size: 1.2rem; font-weight: 600; color: var(--color-cream); margin-bottom: 0.75rem; }
-    .service-card p { color: var(--color-cream-dim); font-size: 0.95rem; line-height: 1.7; }
-
-    /* PORTFOLIO */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-    .portfolio-item { position: relative; overflow: hidden; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 4px; }
-    .portfolio-item img { display: block; width: 100%; height: 320px; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-    .portfolio-item:hover img { transform: scale(1.05); }
-    .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,27,46,0.92) 0%, transparent 60%); opacity: 0; transition: var(--transition-fast); display: flex; align-items: flex-end; padding: 1.5rem; }
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-    .portfolio-caption { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-cream); }
-
-    /* WHY US */
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .why-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1.25rem; }
-    .why-text p { color: var(--color-cream-dim); margin-bottom: 2rem; line-height: 1.8; }
-    .why-features { display: flex; flex-direction: column; gap: 1.25rem; }
-    .why-feature { display: flex; gap: 1rem; align-items: flex-start; }
-    .why-feature-icon { width: 40px; height: 40px; min-width: 40px; background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.3); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-    .why-feature-text h4 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; color: var(--color-cream); margin-bottom: 0.2rem; }
-    .why-feature-text p { font-size: 0.88rem; color: var(--color-cream-dim); margin: 0; }
-    .why-visual { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 2.5rem; }
-    .why-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .why-stat { padding: 1.5rem; background: rgba(200,144,58,0.06); border: 1px solid var(--color-border); border-radius: 8px; text-align: center; }
-    .why-stat-number { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--color-copper-bright); display: block; }
-    .why-stat-label { font-size: 0.75rem; color: var(--color-cream-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
-
-    /* PROCESS */
-    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 2rem; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--color-copper), transparent); }
-    .process-step { text-align: center; padding: 2rem 1.5rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 8px; position: relative; }
-    .step-num { width: 48px; height: 48px; background: var(--color-indigo); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 1rem; font-weight: 700; color: #fff; margin: 0 auto 1.5rem; position: relative; z-index: 1; }
-    .process-step h3 { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--color-cream); margin-bottom: 0.5rem; }
-    .process-step p { font-size: 0.88rem; color: var(--color-cream-dim); line-height: 1.6; }
-
-    /* TESTIMONIALS */
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .testimonial-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 8px; padding: 2rem; position: relative; }
-    .testimonial-card::before { content: '"'; position: absolute; top: 1rem; right: 1.5rem; font-family: var(--font-serif); font-size: 5rem; color: var(--color-copper); opacity: 0.12; line-height: 1; }
-    .testimonial-stars { display: flex; gap: 0.2rem; margin-bottom: 1rem; color: var(--color-copper); font-size: 0.9rem; }
-    .testimonial-text { font-size: 0.95rem; color: var(--color-cream-dim); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
-    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-copper-dark), var(--color-indigo)); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--color-cream); flex-shrink: 0; }
-    .author-name { font-size: 0.9rem; font-weight: 600; color: var(--color-cream); }
-    .author-location { font-size: 0.78rem; color: var(--color-cream-dim); }
-
-    /* FAQ */
-    .faq-list { max-width: 760px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--color-border); }
-    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; cursor: pointer; width: 100%; background: none; border: none; font-family: var(--font-sans); font-size: 1rem; font-weight: 500; color: var(--color-cream); text-align: left; transition: var(--transition-fast); }
-    .faq-question:hover { color: var(--color-copper-bright); }
-    .faq-question:focus-visible { outline: 2px solid var(--color-copper); outline-offset: 2px; }
-    .faq-icon { width: 28px; height: 28px; min-width: 28px; border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--color-copper); transition: var(--transition-fast); }
-    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--color-copper); }
-    .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .faq-item.open .faq-answer { max-height: 300px; }
-    .faq-answer p { padding-bottom: 1.5rem; color: var(--color-cream-dim); line-height: 1.75; font-size: 0.95rem; }
-
-    /* CTA BAND */
-    #cta { background: linear-gradient(135deg, var(--color-bg-accent) 0%, var(--color-bg-mid) 100%); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); text-align: center; padding: 6rem 0; }
-    #cta h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
-    #cta p { color: var(--color-cream-dim); max-width: 500px; margin: 0 auto 2.5rem; }
-    .cta-note { margin-top: 1.5rem; font-size: 0.8rem; color: var(--color-cream-dim); opacity: 0.65; }
-
-    /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 1rem; }
-    .contact-info p { color: var(--color-cream-dim); margin-bottom: 2.5rem; line-height: 1.8; }
-    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-detail { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--color-cream-dim); }
-    .contact-detail-icon { width: 36px; height: 36px; background: rgba(200,144,58,0.1); border: 1px solid var(--color-border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
-    .contact-form { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 2.5rem; }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-cream-dim); margin-bottom: 0.5rem; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(13,27,46,0.8); border: 1px solid var(--color-border); border-radius: 6px; padding: 0.85rem 1rem; color: var(--color-cream); font-family: var(--font-sans); font-size: 0.95rem; transition: var(--transition-fast); outline: none; appearance: none; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--color-copper); box-shadow: 0 0 0 3px rgba(200,144,58,0.12); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-group select option { background: var(--color-bg-dark); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-submit { width: 100%; margin-top: 0.5rem; justify-content: center; font-size: 0.9rem; }
-
-    /* FOOTER */
-    .footer { background: var(--color-bg-dark); border-top: 1px solid var(--color-border); padding: 4rem 0 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-brand p { color: var(--color-cream-dim); font-size: 0.9rem; margin-top: 1rem; max-width: 260px; line-height: 1.7; }
-    .footer-col h4 { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-copper); margin-bottom: 1.25rem; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-links a { font-size: 0.88rem; color: var(--color-cream-dim); transition: var(--transition-fast); }
-    .footer-links a:hover { color: var(--color-cream); }
-    .footer-bottom { border-top: 1px solid var(--color-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .footer-bottom p { font-size: 0.8rem; color: var(--color-cream-dim); opacity: 0.6; }
-
-    /* MOBILE CTA */
-    .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; padding: 1rem; background: rgba(13,27,46,0.97); border-top: 1px solid var(--color-border); backdrop-filter: blur(12px); gap: 0.75rem; }
-    .mobile-cta .btn { flex: 1; justify-content: center; font-size: 0.8rem; padding: 0.75rem 1rem; }
-
-    /* RESPONSIVE */
-    @media (max-width: 992px) {
-      .section { padding: 6rem 0; }
-      .nav-toggle { display: flex; }
-      /* Mobile nav overlay — toggled via JS */
-      .nav-links {
-        position: fixed;
-        inset: 0;
-        background: rgba(13,27,46,0.98);
-        backdrop-filter: blur(16px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        z-index: 98;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity var(--transition-fast);
-      }
-      .nav-links.open { opacity: 1; pointer-events: auto; }
-      .nav-links li { list-style: none; }
-      .nav-links a { font-size: 1.3rem; color: var(--color-cream); letter-spacing: 0.06em; }
-      .nav-links a:hover { color: var(--color-copper-bright); }
-      .nav-cta { margin-left: 0 !important; }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-item:nth-child(2) { border-right: none; }
-      .trust-item:nth-child(3) { border-top: 1px solid var(--color-border); }
-      .services-grid { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .portfolio-item img { height: 260px; }
-      .why-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .process-steps { grid-template-columns: repeat(2, 1fr); }
-      .process-steps::before { display: none; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-      .mobile-cta { display: flex; }
-      .hero-actions .btn-outline { display: none; }
-      #hero { padding-bottom: 5rem; }
-    }
-    @media (max-width: 480px) {
-      .trust-grid { grid-template-columns: 1fr 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .why-stat-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-dim);
     }
 
-    /* QSNERA MARK in NAV */
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
     .nav-logo {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text);
+    }
+    .nav-logo span { color: var(--color-accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-text-dim);
+      transition: color var(--transition-fast);
+    }
+    .nav-links a:hover { color: var(--color-text); text-decoration: none; }
+
+    .nav-cta {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      border-radius: 2px;
+      transition: background var(--transition-fast), color var(--transition-fast);
     }
-    .nav-logo-mark {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
-      opacity: 0.92;
-      transition: opacity var(--transition-fast);
-    }
-    .nav-logo:hover .nav-logo-mark { opacity: 1; }
+    .nav-cta:hover { background: var(--color-accent); color: var(--color-bg); text-decoration: none; }
 
-    /* SECTION DIVIDER */
-    .section-divider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-      line-height: 0;
-    }
-    .section-divider img {
-      width: 100%;
-      max-width: 860px;
-      height: auto;
-      opacity: 0.7;
-      display: block;
-    }
-
-    /* FOOTER EMBLEM */
-    .footer-mark-emblem {
-      display: block;
-      width: 72px;
-      height: 72px;
-      margin-top: 1.5rem;
-      opacity: 0.55;
-      transition: opacity var(--transition-fast);
-    }
-    .footer-brand:hover .footer-mark-emblem { opacity: 0.8; }
-
-    /* FORM SUCCESS STATE */
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-    }
-    .form-success.visible { display: block; }
-    .form-success-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .form-success h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--color-cream);
-      margin-bottom: 0.75rem;
-    }
-    .form-success p {
-      color: var(--color-cream-dim);
-      font-size: 0.95rem;
-    }
-
-    /* NAV TOGGLE (hamburger) */
+    /* Hamburger */
     .nav-toggle {
       display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: none;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      cursor: pointer;
-      padding: 8px;
+      width: 40px; height: 40px;
+      background: none; border: none;
+      cursor: pointer; gap: 5px; padding: 0;
     }
     .nav-toggle span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--color-cream);
-      border-radius: 2px;
-      transition: var(--transition-fast);
+      display: block; width: 22px; height: 2px;
+      background: var(--color-text);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
     }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* === Floating CTA Button === */
-    .cta-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.4rem;
-      background: var(--color-indigo);
-      color: #fff;
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed; inset: 60px 0 0 0;
+        background: rgba(0, 0, 0, 0.97);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 40px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 18px; color: var(--color-text); }
+      .nav-cta { display: none; }
+    }
+
+    /* ═══════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════ */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+      border: none; border-radius: 2px; cursor: pointer;
       text-decoration: none;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(79,70,229,0.4);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease,
-                  box-shadow 0.3s ease, background 0.3s ease;
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-dim);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.4);
+      transform: translateY(-1px); text-decoration: none;
+    }
+    .btn-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      background: transparent; color: var(--color-text);
+      font-family: var(--font-mono); font-size: 14px;
+      border: 1px solid var(--color-border-dim); border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+    .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+
+    /* ═══════════════════════════════════
+       #hero
+    ═══════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 60px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: 20%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
-    .cta-float.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--color-accent);
+      border: 1px solid var(--color-border);
+      padding: 6px 14px; border-radius: 2px;
+      margin-bottom: 32px;
     }
-    .cta-float:hover {
-      background: var(--color-indigo-hover);
-      box-shadow: 0 6px 28px rgba(79,70,229,0.6);
-      transform: translateY(-2px);
+    .hero-tag::before { content: '●'; font-size: 8px; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700; line-height: 1;
+      margin-bottom: 24px; letter-spacing: -0.03em;
     }
-    .cta-float:focus-visible {
-      outline: 2px solid var(--color-copper-bright);
-      outline-offset: 3px;
+    .hero-title em { font-style: normal; color: var(--color-accent); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--color-text-dim); max-width: 520px;
+      margin-bottom: 48px; line-height: 1.7;
     }
-    @media (prefers-reduced-motion: reduce) {
-      .cta-float { transition: opacity 0.4s ease; }
-      .cta-float:hover { transform: none; }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--color-text-dim); letter-spacing: 0.1em;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
     }
-    @media (max-width: 768px) {
-      .cta-float span { display: none; }
-      .cta-float { padding: 1rem; border-radius: 50%; bottom: 1.5rem; right: 1.5rem; }
+    .hero-scroll::after {
+      content: ''; display: block;
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--color-text-dim), transparent);
     }
+
+    /* ═══════════════════════════════════
+       #trust-bar
+    ═══════════════════════════════════ */
+    #trust-bar {
+      padding: 48px 0;
+      border-top: 1px solid var(--color-border-dim);
+      border-bottom: 1px solid var(--color-border-dim);
+      background: var(--color-surface);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .trust-item { text-align: center; }
+    .trust-number {
+      font-family: var(--font-mono);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700; color: var(--color-accent); line-height: 1;
+    }
+    .trust-label {
+      font-size: 13px; color: var(--color-text-dim);
+      margin-top: 8px; font-family: var(--font-mono); letter-spacing: 0.05em;
+    }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 375px) { .trust-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════
+       SHARED SECTION
+    ═══════════════════════════════════ */
+    .section { padding: var(--section-pad) 0; }
+    .section-header { margin-bottom: 64px; }
+    .section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 700; margin-bottom: 16px; }
+    .section-desc { font-size: 17px; color: var(--color-text-dim); max-width: 520px; line-height: 1.7; }
+
+    /* ═══════════════════════════════════
+       #services
+    ═══════════════════════════════════ */
+    #services { background: var(--color-surface); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; border: 1px solid var(--color-border-dim);
+    }
+    .service-card {
+      background: var(--color-card); padding: 48px;
+      border: 1px solid transparent;
+      position: relative; overflow: hidden;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition-fast);
+    }
+    .service-card:hover { background: #1f1f1f; border-color: var(--color-border); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-code {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--color-accent); letter-spacing: 0.1em; margin-bottom: 20px; opacity: 0.7;
+    }
+    .service-name { font-family: var(--font-mono); font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+    .service-desc { font-size: 15px; color: var(--color-text-dim); line-height: 1.7; margin-bottom: 24px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-family: var(--font-mono); font-size: 11px;
+      padding: 4px 10px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid var(--color-border);
+      border-radius: 2px; color: var(--color-text-dim);
+    }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } .service-card { padding: 32px 24px; } }
+
+    /* ═══════════════════════════════════
+       #portfolio
+    ═══════════════════════════════════ */
+    #portfolio { background: var(--color-bg); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .portfolio-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border-dim); border-radius: 4px;
+      overflow: hidden;
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+    }
+    .portfolio-card:hover { border-color: var(--color-border); transform: translateY(-4px); }
+    .portfolio-thumb {
+      aspect-ratio: 16/9; background: var(--color-surface);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 12px; color: var(--color-text-dim);
+      border-bottom: 1px solid var(--color-border-dim);
+      position: relative; overflow: hidden;
+    }
+    .portfolio-thumb::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 60%);
+    }
+    .portfolio-info { padding: 24px; }
+    .portfolio-type { font-family: var(--font-mono); font-size: 11px; color: var(--color-accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+    .portfolio-name { font-family: var(--font-mono); font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .portfolio-desc { font-size: 14px; color: var(--color-text-dim); line-height: 1.6; }
+    @media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════
+       #why-us
+    ═══════════════════════════════════ */
+    #why-us { background: var(--color-surface); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .why-item {
+      padding: 32px; background: var(--color-card);
+      border: 1px solid var(--color-border-dim); border-radius: 4px;
+      transition: border-color var(--transition-fast);
+    }
+    .why-item:hover { border-color: var(--color-border); }
+    .why-icon { font-family: var(--font-mono); font-size: 24px; color: var(--color-accent); margin-bottom: 16px; }
+    .why-title { font-family: var(--font-mono); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+    .why-desc { font-size: 14px; color: var(--color-text-dim); line-height: 1.7; }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════
+       #process
+    ═══════════════════════════════════ */
+    #process { background: var(--color-bg); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    }
+    .process-step { padding: 24px; text-align: center; position: relative; }
+    .step-number {
+      width: 56px; height: 56px; margin: 0 auto 20px;
+      border: 1px solid var(--color-border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 13px; color: var(--color-accent);
+      background: var(--color-bg); position: relative; z-index: 1;
+    }
+    .step-title { font-family: var(--font-mono); font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .step-desc { font-size: 13px; color: var(--color-text-dim); line-height: 1.6; }
+    @media (max-width: 768px) { .process-steps { grid-template-columns: 1fr; } .process-steps::before { display: none; } }
+
+    /* ═══════════════════════════════════
+       #testimonials
+    ═══════════════════════════════════ */
+    #testimonials { background: var(--color-surface); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border-dim); border-radius: 4px; padding: 32px;
+      transition: border-color var(--transition-fast);
+    }
+    .testimonial-card:hover { border-color: var(--color-border); }
+    .testimonial-quote {
+      font-size: 15px; line-height: 1.7; color: var(--color-text-dim);
+      margin-bottom: 24px; font-style: italic;
+    }
+    .testimonial-quote::before { content: '"'; color: var(--color-accent); font-size: 20px; font-style: normal; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 14px; color: var(--color-accent); flex-shrink: 0;
+    }
+    .author-name { font-family: var(--font-mono); font-size: 13px; font-weight: 700; }
+    .author-role { font-size: 12px; color: var(--color-text-dim); }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════
+       #faq
+    ═══════════════════════════════════ */
+    #faq { background: var(--color-bg); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--color-border-dim); }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 24px 0;
+      text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: var(--font-mono); font-size: 15px; font-weight: 500; color: var(--color-text);
+      transition: color var(--transition-fast);
+    }
+    .faq-question:hover { color: var(--color-accent); }
+    .faq-icon {
+      flex-shrink: 0; width: 20px; height: 20px;
+      position: relative; color: var(--color-accent);
+    }
+    .faq-icon::before, .faq-icon::after {
+      content: ''; position: absolute; background: currentColor;
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+    .faq-icon::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .faq-icon::after  { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .faq-item.open .faq-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-smooth); }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer-inner { padding: 0 0 24px; font-size: 15px; color: var(--color-text-dim); line-height: 1.7; }
+
+    /* ═══════════════════════════════════
+       #cta
+    ═══════════════════════════════════ */
+    #cta {
+      padding: var(--section-pad) 0;
+      background: var(--color-surface);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0,212,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--color-accent); margin-bottom: 24px;
+    }
+    .cta-title {
+      font-size: clamp(28px, 5vw, 56px); font-weight: 700;
+      margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .cta-sub { font-size: 17px; color: var(--color-text-dim); margin-bottom: 48px; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ═══════════════════════════════════
+       #contact
+    ═══════════════════════════════════ */
+    #contact { background: var(--color-bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+    .contact-info-title { font-family: var(--font-mono); font-size: 22px; font-weight: 700; margin-bottom: 16px; }
+    .contact-info-desc { font-size: 15px; color: var(--color-text-dim); line-height: 1.7; margin-bottom: 32px; }
+    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { font-family: var(--font-mono); font-size: 13px; color: var(--color-text-dim); }
+    .contact-item a { color: var(--color-accent); }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.1em; color: var(--color-text-dim); text-transform: uppercase;
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--color-card);
+      border: 1px solid var(--color-border-dim); border-radius: 2px;
+      padding: 12px 16px; color: var(--color-text);
+      font-family: var(--font-sans); font-size: 15px; width: 100%;
+      transition: border-color var(--transition-fast); appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none; border-color: var(--color-accent);
+    }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300D4FF' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 40px; cursor: pointer;
+    }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    /* ═══════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════ */
+    footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border-dim); padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .footer-logo { font-family: var(--font-mono); font-weight: 700; font-size: 15px; color: var(--color-text-dim); }
+    .footer-logo span { color: var(--color-accent); }
+    .footer-copy { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-dim); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-dim); transition: color var(--transition-fast); }
+    .footer-links a:hover { color: var(--color-accent); text-decoration: none; }
+    @media (max-width: 600px) { .footer-inner { flex-direction: column; text-align: center; } }
   </style>
 </head>
+
 <body>
 
-  <nav class="nav" role="navigation" aria-label="Main navigation">
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="QSNera — Home">
-        <img src="assets/qsnera-mark.svg" alt="" class="nav-logo-mark" aria-hidden="true" width="28" height="28" />
-        QS<span>Nera</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact" class="btn btn-primary nav-cta">Get Estimate</a></li>
+      <a href="#hero" class="nav-logo" aria-label="Axiom:Void home">Axiom<span>:Void</span></a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#services" onclick="closeNav()">Services</a></li>
+        <li><a href="#portfolio" onclick="closeNav()">Work</a></li>
+        <li><a href="#process" onclick="closeNav()">Process</a></li>
+        <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <a href="#contact" class="nav-cta">Start project →</a>
+      <button class="nav-toggle" id="navToggle"
+              aria-expanded="false" aria-controls="navLinks"
+              aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
+  <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg" role="img" aria-label="Luxury marble installation background"></div>
     <div class="container">
-      <div class="hero-content reveal">
-        <div class="hero-eyebrow"><span class="label">Premium Stone &amp; Tile Studio</span></div>
-        <h1>Your Space Deserves<br /><em>Artisan Craftsmanship</em></h1>
-        <p class="hero-sub">We transform residential and commercial estates with bookmatched marble, large-format porcelain, and handcrafted Zellige — installed by craftsmen who obsess over every millimetre.</p>
+      <div class="hero-content">
+        <div class="hero-tag" role="status">Available for projects</div>
+        <h1 class="hero-title">We code<br>the <em>vacuum.</em></h1>
+        <p class="hero-sub">
+          Axiom:Void is a web development studio crafting precise digital products.
+          From UI/UX to backend architecture — we build what others imagine.
+        </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get a Free Estimate &rarr;</a>
-          <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+          <a href="#contact" class="btn-primary">Start Your Project</a>
+          <a href="#portfolio" class="btn-outline">View Our Work</a>
         </div>
-        <p class="hero-note">Free consultation &middot; No-pressure estimate &middot; 127 projects completed</p>
       </div>
     </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL</div>
   </section>
 
-  <div id="trust-bar">
+  <!-- TRUST BAR -->
+  <section id="trust-bar" aria-label="Studio statistics">
     <div class="container">
       <div class="trust-grid">
-        <div class="trust-item reveal"><div class="trust-number">127+</div><div class="trust-label">Projects Completed</div></div>
-        <div class="trust-item reveal"><div class="trust-number">12</div><div class="trust-label">Years of Craftsmanship</div></div>
-        <div class="trust-item reveal"><div class="trust-number">98%</div><div class="trust-label">Client Satisfaction</div></div>
-        <div class="trust-item reveal"><div class="trust-number">24h</div><div class="trust-label">Estimate Response</div></div>
+        <div class="trust-item reveal"><div class="trust-number">40+</div><div class="trust-label">Projects Shipped</div></div>
+        <div class="trust-item reveal"><div class="trust-number">5+</div><div class="trust-label">Years in Web Dev</div></div>
+        <div class="trust-item reveal"><div class="trust-number">12+</div><div class="trust-label">Technologies</div></div>
+        <div class="trust-item reveal"><div class="trust-number">&lt;24h</div><div class="trust-label">Response Time</div></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section id="services" class="section">
+  <!-- SERVICES -->
+  <section id="services" class="section" aria-labelledby="services-heading">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="label">What We Solve</span>
-        <div class="divider"></div>
-        <h2>Your Project, Executed Flawlessly</h2>
-        <p>Every installation starts with understanding your vision — then delivering it with zero compromise on quality.</p>
-      </div>
+      <header class="section-header reveal">
+        <p class="section-label">What we build</p>
+        <h2 class="section-title" id="services-heading">Our Services</h2>
+        <p class="section-desc">Four specializations. One studio. Every project gets the full stack of our expertise.</p>
+      </header>
       <div class="services-grid">
         <article class="service-card reveal">
-          <div class="service-icon" aria-hidden="true">&#129683;</div>
-          <p class="service-problem">Problem: generic kitchens</p>
-          <h3>Bookmatched Marble Slabs</h3>
-          <p>Mirror-matched stone panels that turn walls and islands into one-of-a-kind architectural statements. No two installations are ever identical.</p>
+          <div class="service-code">SVC-01</div>
+          <h3 class="service-name">Void:Form</h3>
+          <p class="service-desc">UI/UX design and frontend engineering. We craft interfaces that feel inevitable — clean, accessible, and precisely tuned to your users.</p>
+          <div class="service-tags"><span class="tag">Figma</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Accessibility</span></div>
         </article>
         <article class="service-card reveal">
-          <div class="service-icon" aria-hidden="true">&#11035;</div>
-          <p class="service-problem">Problem: dated floor layouts</p>
-          <h3>Large-Format Porcelain</h3>
-          <p>Seamless 120&times;240 cm slabs eliminate grout lines and create the expansive, hotel-quality floors that smaller tiles simply cannot achieve.</p>
+          <div class="service-code">SVC-02</div>
+          <h3 class="service-name">Axiom:Core</h3>
+          <p class="service-desc">Backend architecture and API engineering. Scalable, secure, and maintainable systems built to handle real load from day one.</p>
+          <div class="service-tags"><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">REST/GraphQL</span></div>
         </article>
         <article class="service-card reveal">
-          <div class="service-icon" aria-hidden="true">&#10022;</div>
-          <p class="service-problem">Problem: ordinary bathrooms</p>
-          <h3>Handcrafted Zellige</h3>
-          <p>Authentic Moroccan clay tiles, hand-cut and glazed. Each piece is unique — no machine can replicate the depth and texture of real Zellige.</p>
+          <div class="service-code">SVC-03</div>
+          <h3 class="service-name">The Nexus</h3>
+          <p class="service-desc">AI integrations and API connectivity. We wire intelligent systems into your product so it thinks, learns, and responds with precision.</p>
+          <div class="service-tags"><span class="tag">LLM APIs</span><span class="tag">Automation</span><span class="tag">Webhooks</span><span class="tag">Pipelines</span></div>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-code">SVC-04</div>
+          <h3 class="service-name">Absolute Zero</h3>
+          <p class="service-desc">Technical audit and performance optimization. We find what's slowing you down, breaking your users, and bleeding your infrastructure budget.</p>
+          <div class="service-tags"><span class="tag">Core Web Vitals</span><span class="tag">Security</span><span class="tag">Code Review</span><span class="tag">DevOps</span></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="portfolio" class="section section-alt">
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section" aria-labelledby="portfolio-heading">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="label">Our Work</span>
-        <div class="divider"></div>
-        <h2>Installations That Speak for Themselves</h2>
-        <p>Every project in our portfolio is real — photographed on-site, no staging, no filters.</p>
-      </div>
-      <div class="portfolio-grid reveal">
-        <div class="portfolio-item"><img src="assets/portfolio-1.png" alt="Bookmatched marble wall installation in luxury kitchen" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Marble Bookmatch &middot; Lake Oswego</span></div></div>
-        <div class="portfolio-item"><img src="assets/portfolio-2.png" alt="Large-format porcelain floor in modern living room" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Porcelain Slab &middot; West Linn</span></div></div>
-        <div class="portfolio-item"><img src="assets/portfolio-3.png" alt="Zellige tile installation in master bathroom" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Zellige Bath &middot; SW Portland</span></div></div>
-        <div class="portfolio-item"><img src="assets/portfolio-4.png" alt="Stone feature wall in commercial lobby" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Feature Wall &middot; Pearl District</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-5.png" alt="Bookmatched marble entry hall installation — Beverly Hills Estate" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Marble Bookmatch &middot; Beverly Hills</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-6.png" alt="Zellige Moroccan ceramic tile kitchen backsplash — Malibu Residence" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Zellige Kitchen &middot; Malibu</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-7.png" alt="Large-format greige porcelain slab floor — Santa Monica Villa" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Porcelain Slab &middot; Santa Monica</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-8.png" alt="Herringbone travertine stone terrace installation — Bel Air Property" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Travertine Terrace &middot; Bel Air</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-9.png" alt="Calacatta gold marble master bathroom with dramatic veining — Hollywood Hills" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Calacatta Gold &middot; Hollywood Hills</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-10.png" alt="Natural slate feature wall with mineral flecks — Century City Penthouse" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Slate Feature Wall &middot; Century City</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-11.png" alt="Venetian glass mosaic pool deck installation — Holmby Hills Estate" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Venetian Mosaic &middot; Holmby Hills</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-12.png" alt="Statuario white marble kitchen island with bold grey veins — Pacific Palisades" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Statuario Marble &middot; Pacific Palisades</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-13.png" alt="Black onyx bathroom accent wall with purple shimmer — Sunset Strip" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Black Onyx &middot; Sunset Strip</span></div></div>
-
-        <div class="portfolio-item reveal"><img src="assets/portfolio-14.png" alt="Terrazzo polished commercial lobby floor with marble chip inlays — Downtown LA" loading="lazy" /><div class="portfolio-overlay"><span class="portfolio-caption">Terrazzo Lobby &middot; Downtown LA</span></div></div>
+      <header class="section-header reveal">
+        <p class="section-label">Selected work</p>
+        <h2 class="section-title" id="portfolio-heading">Recent Projects</h2>
+        <p class="section-desc">A selection of digital products we've built — from zero to shipped.</p>
+      </header>
+      <div class="portfolio-grid">
+        <article class="portfolio-card reveal">
+          <div class="portfolio-thumb" aria-label="Analytics Platform preview"><span>[ SaaS Dashboard ]</span></div>
+          <div class="portfolio-info">
+            <div class="portfolio-type">Void:Form + Axiom:Core</div>
+            <h3 class="portfolio-name">Analytics Platform</h3>
+            <p class="portfolio-desc">Real-time data visualization dashboard with custom charting, role-based access, and sub-100ms query performance.</p>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-thumb" aria-label="Document Intelligence preview"><span>[ AI Workflow ]</span></div>
+          <div class="portfolio-info">
+            <div class="portfolio-type">The Nexus</div>
+            <h3 class="portfolio-name">Document Intelligence</h3>
+            <p class="portfolio-desc">LLM-powered document processing pipeline: extraction, classification, and routing — fully automated via API.</p>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-thumb" aria-label="Premium Store preview"><span>[ E-commerce ]</span></div>
+          <div class="portfolio-info">
+            <div class="portfolio-type">Void:Form + Axiom:Core</div>
+            <h3 class="portfolio-name">Premium Store</h3>
+            <p class="portfolio-desc">Headless commerce build: custom storefront, inventory management, and payment integration with 99.9% uptime SLA.</p>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-thumb" aria-label="Performance Recovery preview"><span>[ Audit ]</span></div>
+          <div class="portfolio-info">
+            <div class="portfolio-type">Absolute Zero</div>
+            <h3 class="portfolio-name">Performance Recovery</h3>
+            <p class="portfolio-desc">Full technical audit that identified 23 issues, cut load time by 60%, and reduced cloud costs by 40%.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="why-us" class="section">
+  <!-- WHY US -->
+  <section id="why-us" class="section" aria-labelledby="why-heading">
     <div class="container">
+      <header class="section-header reveal">
+        <p class="section-label">Differentiators</p>
+        <h2 class="section-title" id="why-heading">Why Axiom:Void</h2>
+        <p class="section-desc">We're not an agency. We're a precision instrument.</p>
+      </header>
       <div class="why-grid">
-        <div class="why-text reveal">
-          <span class="label">Why QSNera</span>
-          <div class="divider" style="margin:1.25rem 0;"></div>
-          <h2>Precision Over Speed.<br />Craft Over Volume.</h2>
-          <p>We deliberately limit the number of projects we take on each quarter. That means your installation gets our full attention — from the first site visit to the final polish.</p>
-          <div class="why-features">
-            <div class="why-feature"><div class="why-feature-icon" aria-hidden="true">&#10003;</div><div class="why-feature-text"><h4>Dedicated project craftsman</h4><p>One lead installer owns your project start to finish — no subcontracting, no handoffs.</p></div></div>
-            <div class="why-feature"><div class="why-feature-icon" aria-hidden="true">&#10003;</div><div class="why-feature-text"><h4>Material-first consultation</h4><p>We help you select the right stone for your light conditions, usage, and budget before a single tile is ordered.</p></div></div>
-            <div class="why-feature"><div class="why-feature-icon" aria-hidden="true">&#10003;</div><div class="why-feature-text"><h4>Fixed-price estimates</h4><p>The price we quote is the price you pay. No surprise invoices after work begins.</p></div></div>
-          </div>
-        </div>
-        <div class="why-visual reveal">
-          <div class="why-stat-grid">
-            <div class="why-stat"><span class="why-stat-number">0</span><span class="why-stat-label">Hidden fees</span></div>
-            <div class="why-stat"><span class="why-stat-number">100%</span><span class="why-stat-label">In-house crew</span></div>
-            <div class="why-stat"><span class="why-stat-number">5yr</span><span class="why-stat-label">Workmanship warranty</span></div>
-            <div class="why-stat"><span class="why-stat-number">3</span><span class="why-stat-label">Concurrent projects max</span></div>
-          </div>
-        </div>
+        <div class="why-item reveal"><div class="why-icon">[01]</div><h3 class="why-title">Zero Bloat</h3><p class="why-desc">No account managers, no padding. You work directly with the engineers building your product.</p></div>
+        <div class="why-item reveal"><div class="why-icon">[02]</div><h3 class="why-title">Full Stack</h3><p class="why-desc">Design through deployment in one studio. No handoffs, no gaps, no blame-shifting between teams.</p></div>
+        <div class="why-item reveal"><div class="why-icon">[03]</div><h3 class="why-title">Async-First</h3><p class="why-desc">We work across time zones without missing a beat. Clear communication, documented decisions.</p></div>
+        <div class="why-item reveal"><div class="why-icon">[04]</div><h3 class="why-title">Ownership</h3><p class="why-desc">You own everything: code, infrastructure, domains. We build it, hand it off clean, and document it thoroughly.</p></div>
+        <div class="why-item reveal"><div class="why-icon">[05]</div><h3 class="why-title">Speed</h3><p class="why-desc">First working prototype within 72 hours. We move fast without cutting corners on architecture or testing.</p></div>
+        <div class="why-item reveal"><div class="why-icon">[06]</div><h3 class="why-title">Precision</h3><p class="why-desc">Every decision is deliberate. We write code that's readable, testable, and maintainable five years from now.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="process" class="section section-alt">
+  <!-- PROCESS -->
+  <section id="process" class="section" aria-labelledby="process-heading">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="label">How It Works</span>
-        <div class="divider"></div>
-        <h2>From Idea to Installed &mdash; 4 Clear Steps</h2>
-        <p>No guesswork. You always know exactly where your project stands.</p>
-      </div>
+      <header class="section-header reveal">
+        <p class="section-label">How we work</p>
+        <h2 class="section-title" id="process-heading">Our Process</h2>
+        <p class="section-desc">Four phases. Clear deliverables at each step. No surprises.</p>
+      </header>
       <div class="process-steps">
-        <div class="process-step reveal"><div class="step-num" aria-hidden="true">1</div><h3>Free Consultation</h3><p>We visit your space, understand your vision, assess the substrate, and discuss stone options. No obligation.</p></div>
-        <div class="process-step reveal"><div class="step-num" aria-hidden="true">2</div><h3>Fixed-Price Estimate</h3><p>You receive a detailed written estimate within 24 hours — materials, labour, timeline. No surprises later.</p></div>
-        <div class="process-step reveal"><div class="step-num" aria-hidden="true">3</div><h3>Precision Installation</h3><p>Our in-house crew executes the work. You receive daily photo updates. Site is left clean every evening.</p></div>
-        <div class="process-step reveal"><div class="step-num" aria-hidden="true">4</div><h3>Final Walkthrough</h3><p>We walk the finished installation together. Only when you're fully satisfied do we consider the project closed.</p></div>
+        <div class="process-step reveal">
+          <div class="step-number" aria-hidden="true">01</div>
+          <h3 class="step-title">Discovery</h3>
+          <p class="step-desc">We map your goals, users, and constraints. Deep dive before a single line of code.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number" aria-hidden="true">02</div>
+          <h3 class="step-title">Architecture</h3>
+          <p class="step-desc">System design, tech stack selection, and project blueprint — signed off before build starts.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number" aria-hidden="true">03</div>
+          <h3 class="step-title">Engineering</h3>
+          <p class="step-desc">Iterative builds with weekly demos. You see real progress, not just status updates.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number" aria-hidden="true">04</div>
+          <h3 class="step-title">Deployment</h3>
+          <p class="step-desc">CI/CD setup, monitoring, documentation, and handoff. Shipped means fully operational.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="testimonials" class="section">
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section" aria-labelledby="testimonials-heading">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="label">Client Reviews</span>
-        <div class="divider"></div>
-        <h2>What Our Clients Say</h2>
-        <p>Real homeowners. Real projects. Specific results &mdash; not generic praise.</p>
-      </div>
+      <header class="section-header reveal">
+        <p class="section-label">What clients say</p>
+        <h2 class="section-title" id="testimonials-heading">Testimonials</h2>
+      </header>
       <div class="testimonials-grid">
         <article class="testimonial-card reveal">
-          <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-text">"The bookmatched marble in our kitchen island is the centrepiece of our entire home renovation. QSNera's team matched the veining so precisely that guests assume it was factory-installed. Three years later — not one crack, not one shifted tile."</p>
-          <div class="testimonial-author"><div class="author-avatar" aria-hidden="true">SM</div><div><div class="author-name">Sarah M.</div><div class="author-location">Lake Oswego, OR &middot; Kitchen renovation</div></div></div>
+          <p class="testimonial-quote">They shipped our MVP in 3 weeks, fully tested and documented. Exactly what we scoped, nothing less. Never worked with a studio this clean.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">AK</div>
+            <div><div class="author-name">Alex K.</div><div class="author-role">Founder, B2B SaaS</div></div>
+          </div>
         </article>
         <article class="testimonial-card reveal">
-          <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-text">"We'd had two other contractors quote the large-format porcelain — both were vague about substrate prep. QSNera spent 40 minutes explaining exactly why our floor needed levelling before tile. That level of honesty earned our trust immediately."</p>
-          <div class="testimonial-author"><div class="author-avatar" aria-hidden="true">DP</div><div><div class="author-name">David P.</div><div class="author-location">West Linn, OR &middot; Open-plan living area</div></div></div>
+          <p class="testimonial-quote">The Nexus integration reduced our manual work by 80%. Their AI pipeline handles what used to take a team of four — and it's more accurate.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">SM</div>
+            <div><div class="author-name">Sarah M.</div><div class="author-role">CTO, Logistics Platform</div></div>
+          </div>
         </article>
         <article class="testimonial-card reveal">
-          <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-text">"The Zellige bathroom is exactly what I brought in photos, except better. The texture and depth in person is something no photo captures. QSNera understood immediately what I was trying to achieve — no lengthy back-and-forth, no compromises."</p>
-          <div class="testimonial-author"><div class="author-avatar" aria-hidden="true">JL</div><div><div class="author-name">Julia L.</div><div class="author-location">SW Portland, OR &middot; Master bathroom</div></div></div>
+          <p class="testimonial-quote">Absolute Zero audit found things our internal team missed for two years. Load time dropped from 8s to 1.4s. Paid for itself in week one.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">DP</div>
+            <div><div class="author-name">David P.</div><div class="author-role">Head of Product, E-commerce</div></div>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="faq" class="section section-alt">
+  <!-- FAQ -->
+  <section id="faq" class="section" aria-labelledby="faq-heading">
     <div class="container">
-      <div class="section-header reveal"><span class="label">Common Questions</span><div class="divider"></div><h2>Answers Before You Ask</h2></div>
-      <div class="faq-list reveal">
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">How long does a typical tile installation take?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>A standard bathroom takes 3–5 days. A full kitchen including prep and marble bookmatch typically runs 7–10 days. We give you an exact timeline in your written estimate — and we stick to it.</p></div></div>
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">Do you supply the tile or do I buy my own?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>Both options work. We have preferred suppliers for marble and Zellige and can source materials at trade pricing. Or we can work with materials you've selected — we'll inspect them first to confirm suitability.</p></div></div>
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">What's included in the 5-year workmanship warranty?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>Any failure caused by our installation — loose tiles, failed grout joints, lippage — is remedied at no cost within 5 years. Normal wear or damage from impact are not included. We document everything in writing.</p></div></div>
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">Can I see a completed project before hiring you?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>Yes — when client permission allows, we invite prospective clients to see completed work in person. We can also arrange a detailed portfolio review with before/after documentation of comparable projects.</p></div></div>
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">Do you work on commercial projects?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>Yes. We work on boutique hotels, restaurants, and professional office spaces. Commercial projects go through the same consultation and fixed-price process as residential.</p></div></div>
-        <div class="faq-item"><button class="faq-question" aria-expanded="false">What areas do you serve?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" role="region"><p>Our primary service area covers Portland Metro: Lake Oswego, West Linn, SW Portland, Tigard, Tualatin, and Beaverton. For exceptional projects outside this radius, contact us.</p></div></div>
+      <header class="section-header reveal">
+        <p class="section-label">Questions</p>
+        <h2 class="section-title" id="faq-heading">FAQ</h2>
+      </header>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How long does a typical project take?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">MVPs typically ship in 3–6 weeks. Full-featured products take 2–4 months depending on scope. We always define a clear timeline in the Discovery phase and stick to it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What technologies do you work with?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Frontend: React, Next.js, TypeScript. Backend: Node.js, Python, FastAPI. Databases: PostgreSQL, Redis, MongoDB. Infrastructure: Railway, Vercel, AWS, Docker. We pick the right tool for the job, not our comfort zone.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Do you work with existing codebases?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Our Absolute Zero audit is specifically designed for existing projects. We assess the codebase, identify risks, and define a migration or improvement plan before touching anything.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Who owns the code after the project?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">You do. 100%. All code, repositories, infrastructure access, and documentation transfer to you on project completion. No lock-in, no licensing fees.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How do AI integrations work in practice?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">We connect to LLM APIs (OpenAI, Anthropic, etc.), design prompts and pipelines for your use case, build fallback logic, and monitor output quality. The result is AI that behaves predictably in production.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What's your pricing model?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Fixed-price per project or monthly retainer for ongoing work. We scope precisely upfront so there are no surprise invoices. Get in touch for a custom estimate.</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="cta">
-    <div class="container reveal">
-      <span class="label" style="display:block;text-align:center;margin-bottom:0.5rem;">Ready to Begin?</span>
-      <h2>Your Estimate Is Free.<br />Your Timeline Starts Now.</h2>
-      <p>Describe your project — we respond within 24 hours with a no-obligation consultation date.</p>
-      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-        <a href="#contact" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">Get Your Free Estimate &rarr;</a>
+  <!-- CTA -->
+  <section id="cta" aria-labelledby="cta-heading">
+    <div class="container">
+      <p class="cta-label">Ready to build?</p>
+      <h2 class="cta-title reveal" id="cta-heading">Start your project.<br>We'll handle the rest.</h2>
+      <p class="cta-sub reveal">No fluff, no scope creep. Just precise digital engineering.</p>
+      <div class="cta-actions reveal">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
       </div>
-      <p class="cta-note">No sales pressure. No commitment required. Just a straightforward conversation about your space.</p>
     </div>
   </section>
 
-  <section id="contact" class="section">
+  <!-- CONTACT -->
+  <section id="contact" class="section" aria-labelledby="contact-heading">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <span class="label">Contact</span>
-          <div class="divider" style="margin:1.25rem 0;"></div>
-          <h2>Let's Discuss Your Project</h2>
-          <p>Tell us what you're envisioning — material, space, timeline. We'll tell you if it's achievable, how long it takes, and what it costs. Honestly.</p>
-          <div class="contact-details">
-            <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">&#9993;</div><span>inquire@qsnera.com</span></div>
-            <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">&#128205;</div><span>Portland Metro, Oregon</span></div>
-            <div class="contact-detail"><div class="contact-detail-icon" aria-hidden="true">&#8987;</div><span>Response within 24 hours</span></div>
+          <p class="section-label">Get in touch</p>
+          <h2 class="contact-info-title" id="contact-heading">Let's build<br>something precise.</h2>
+          <p class="contact-info-desc">Tell us about your project. We'll respond within 24 hours with an honest assessment and a rough scope.</p>
+          <div class="contact-detail">
+            <div class="contact-item">Email: <a href="mailto:hello@axiom-void.dev">hello@axiom-void.dev</a></div>
+            <div class="contact-item">Domain: axiom-void.dev</div>
+            <div class="contact-item">Response time: &lt;24h</div>
           </div>
         </div>
-        <div class="contact-form reveal">
-          <form action="#" method="post" novalidate>
-            <div class="form-row">
-              <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" placeholder="Sarah Mitchell" required autocomplete="name" /></div>
-              <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" /></div>
-            </div>
-            <div class="form-group">
-              <label for="service">Type of Project</label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>Select project type&hellip;</option>
-                <option value="marble">Bookmatched Marble</option>
-                <option value="porcelain">Large-Format Porcelain</option>
-                <option value="zellige">Handcrafted Zellige</option>
-                <option value="other">Other / Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-group"><label for="message">Describe Your Space</label><textarea id="message" name="message" placeholder="E.g. Kitchen island remodel in Lake Oswego, roughly 20 sq ft, looking at Calacatta marble…"></textarea></div>
-            <button type="submit" class="btn btn-primary form-submit">Request Free Consultation &rarr;</button>
-          </form>
-        </div>
+        <form class="contact-form reveal" name="contact" method="post" action="#contact" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Name</label>
+            <input class="form-input" type="text" id="contact-name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email</label>
+            <input class="form-input" type="email" id="contact-email" name="email" placeholder="you@company.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-service">Service</label>
+            <select class="form-select" id="contact-service" name="service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option value="void-form">Void:Form — UI/UX &amp; Frontend</option>
+              <option value="axiom-core">Axiom:Core — Backend &amp; Architecture</option>
+              <option value="nexus">The Nexus — AI Integrations</option>
+              <option value="absolute-zero">Absolute Zero — Technical Audit</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Project brief</label>
+            <textarea class="form-textarea" id="contact-message" name="message" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message →</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="#hero" class="nav-logo">QS<span>Nera</span></a><p>Luxury tile and stone installation for residential and commercial estates. Portland Metro, Oregon.</p></div>
-        <div class="footer-col"><h4>Services</h4><ul class="footer-links"><li><a href="#services">Bookmatched Marble</a></li><li><a href="#services">Large-Format Porcelain</a></li><li><a href="#services">Handcrafted Zellige</a></li></ul></div>
-        <div class="footer-col"><h4>Studio</h4><ul class="footer-links"><li><a href="#why-us">Why QSNera</a></li><li><a href="#process">Our Process</a></li><li><a href="#portfolio">Portfolio</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><ul class="footer-links"><li><a href="#contact">Get an Estimate</a></li><li><a href="mailto:inquire@qsnera.com">inquire@qsnera.com</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      </div>
-      <div class="footer-bottom"><p>&copy; 2026 QSNera. Luxury Tile &amp; Stone Studio.</p><p>Portland Metro &middot; Premium Tile &amp; Stone Installation</p></div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo">Axiom<span>:Void</span></div>
+      <p class="footer-copy">© 2026 Axiom:Void. All rights reserved.</p>
+      <ul class="footer-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </footer>
 
-  <div class="mobile-cta" role="complementary" aria-label="Quick actions">
-    <a href="mailto:inquire@qsnera.com" class="btn btn-outline">&#9993; Email Us</a>
-    <a href="#contact" class="btn btn-primary">Get Estimate &rarr;</a>
-  </div>
-
   <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    'use strict';
 
-    document.querySelectorAll('.services-grid .service-card, .process-steps .process-step, .testimonials-grid .testimonial-card, .trust-grid .trust-item').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.1}s`;
+    /* Hamburger nav */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    function closeNav() {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    /* Scroll reveal */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+
+    /* FAQ accordion */
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(openItem => {
-          openItem.classList.remove('open');
-          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        const isOpen = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('open');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
         });
-        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
 
-    const nav = document.querySelector('.nav');
-    if (nav) {
-      window.addEventListener('scroll', () => {
-        nav.style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
-      }, { passive: true });
-    }
-
-    // Mobile hamburger nav
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = navToggle.classList.toggle('open');
-        navLinks.classList.toggle('open', isOpen);
-        navToggle.setAttribute('aria-expanded', String(isOpen));
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+    /* Active nav highlight */
+    const sections  = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const navObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.removeAttribute('aria-current'));
+          const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (active) active.setAttribute('aria-current', 'true');
+        }
       });
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('open');
-          navLinks.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      });
-    }
-
-    // Floating CTA — появляется через 3 сек после загрузки
-    setTimeout(() => {
-      const ctaBtn = document.getElementById('ctaFloat');
-      if (ctaBtn) ctaBtn.classList.add('visible');
-    }, 3000);
+    }, { threshold: 0.4 });
+    sections.forEach(s => navObs.observe(s));
   </script>
-
-  <!-- Floating CTA Button -->
-  <a href="#contact" class="cta-float" id="ctaFloat" aria-label="Get free estimate">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
-    </svg>
-    <span>Get Estimate</span>
-  </a>
 </body>
 </html>
