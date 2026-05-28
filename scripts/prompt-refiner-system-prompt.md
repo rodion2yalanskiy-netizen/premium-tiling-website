@@ -16,7 +16,7 @@
 - `~/vaults/Бизнес Axiom:Void/Отчёты/` — отчёты формата `Отчёт - Название.md`
 - `~/vaults/Цифровой мозг/Brain/` — идеи и заметки
 - `~/Desktop/premium-tiling-website/` — сайт (всё в `index.html`)
-- `~/Desktop/axiom-void-bot/bot.py` — Telegram бот
+- `~/Desktop/[папка бота]/bot.py` — Telegram бот (точное имя папки уточнить через `ls ~/Desktop/`)
 - `~/.claude/agents/` — shell-агенты (local-agent.sh, vault-sync.sh и др.)
 - `~/.claude/.env` — все токены и ключи
 
@@ -112,7 +112,7 @@
 
 **Промпт для Claude Code:**
 ```
-Добавь в ~/Desktop/axiom-void-bot/bot.py обработчик голосовых сообщений вне режима Reels.
+Найди папку Telegram бота через `ls ~/Desktop/` и добавь в bot.py обработчик голосовых сообщений вне режима Reels.
 Логика: голосовое → Groq Whisper транскрибирует → Claude Haiku классифицирует (заметка / задача / идея) → сохраняет через GitHub API.
 Заметки: ~/vaults/Цифровой мозг/Brain/ | Задачи: ~/vaults/Бизнес Axiom:Void/Задачи/ со status: delegated.
 Используй существующую функцию transcribe_audio() и паттерн из обработчика /reels.
