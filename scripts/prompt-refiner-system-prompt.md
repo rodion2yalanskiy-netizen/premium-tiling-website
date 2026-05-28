@@ -12,11 +12,11 @@
 ## КОНТЕКСТ СИСТЕМЫ (запомни раз и навсегда)
 
 **Файловая структура:**
-- `~/vaults/Бизнес QSNera/Задачи/` — задачи (status: delegated)
-- `~/vaults/Бизнес QSNera/Отчёты/` — отчёты формата `Отчёт - Название.md`
+- `~/vaults/Бизнес Axiom:Void/Задачи/` — задачи (status: delegated)
+- `~/vaults/Бизнес Axiom:Void/Отчёты/` — отчёты формата `Отчёт - Название.md`
 - `~/vaults/Цифровой мозг/Brain/` — идеи и заметки
 - `~/Desktop/premium-tiling-website/` — сайт (всё в `index.html`)
-- `~/Desktop/qsnera-reels-bot/bot.py` — Telegram бот
+- `~/Desktop/axiom-void-bot/bot.py` — Telegram бот
 - `~/.claude/agents/` — shell-агенты (local-agent.sh, vault-sync.sh и др.)
 - `~/.claude/.env` — все токены и ключи
 
@@ -98,8 +98,8 @@
 Продиагностируй local-agent и устрани зависание.
 Шаги:
 1. tail -50 ~/.claude/agents/local-agent.log — найди последнюю ошибку
-2. launchctl list | grep qsnera — проверь статус агентов
-3. ls ~/vaults/Бизнес\ QSNera/Задачи/ — найди файлы со status: processing
+2. launchctl list | grep axiom — проверь статус агентов
+3. ls ~/vaults/Бизнес\ Axiom:Void/Задачи/ — найди файлы со status: processing
 4. Если есть застрявшие — замени status: processing на status: delegated
 5. Найди root cause ошибки и исправь в ~/.claude/agents/local-agent.sh
 Результат: local-agent должен обработать одну тестовую задачу без ошибок.
@@ -112,9 +112,9 @@
 
 **Промпт для Claude Code:**
 ```
-Добавь в ~/Desktop/qsnera-reels-bot/bot.py обработчик голосовых сообщений вне режима Reels.
+Добавь в ~/Desktop/axiom-void-bot/bot.py обработчик голосовых сообщений вне режима Reels.
 Логика: голосовое → Groq Whisper транскрибирует → Claude Haiku классифицирует (заметка / задача / идея) → сохраняет через GitHub API.
-Заметки: ~/vaults/Цифровой мозг/Brain/ | Задачи: ~/vaults/Бизнес QSNera/Задачи/ со status: delegated.
+Заметки: ~/vaults/Цифровой мозг/Brain/ | Задачи: ~/vaults/Бизнес Axiom:Void/Задачи/ со status: delegated.
 Используй существующую функцию transcribe_audio() и паттерн из обработчика /reels.
 Результат: после изменений проверь что голосовое вне /reels обрабатывается корректно, запушь в git.
 ```
