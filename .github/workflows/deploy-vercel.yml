@@ -13,17 +13,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Deploy to Vercel (production)
+      - name: Trigger Vercel Deploy Hook
         run: |
-          npm install --global vercel@latest --quiet
-          vercel deploy --prod --yes --token="$VERCEL_TOKEN"
+          if [ -n "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            RESPONSE=$(curl -s -X POST "$VERCEL_DEPLOY_HOOK_URL")
+            echo "Deploy hook triggered: $RESPONSE"
+          else
+            echo "::warning::VERCEL_DEPLOY_HOOK_URL secret not configured."
+            echo "To enable auto-deploy:"
+            echo "  1. Vercel Dashboard → Project → Settings → Git → Deploy Hooks"
+            echo "  2. Create hook named 'github-main', branch 'main'"
+            echo "  3. GitHub repo → Settings → Secrets → VERCEL_DEPLOY_HOOK_URL = <hook URL>"
+            echo ""
+            echo "Alternative: connect repo directly in Vercel Dashboard → Git Integration"
+            exit 0
+          fi
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: team_bcTNaRxdoE8lVdNqi3SeriXG
-          VERCEL_PROJECT_ID: prj_h8rEbICzMCoNtEpwIhFcejVJFZEg
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
