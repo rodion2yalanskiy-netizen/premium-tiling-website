@@ -1,0 +1,29 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'vercel.json'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel (production)
+        run: |
+          npm install --global vercel@latest --quiet
+          vercel deploy --prod --yes --token="$VERCEL_TOKEN"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_bcTNaRxdoE8lVdNqi3SeriXG
+          VERCEL_PROJECT_ID: prj_h8rEbICzMCoNtEpwIhFcejVJFZEg
